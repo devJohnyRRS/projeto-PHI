@@ -9,7 +9,7 @@ export const colors = {
   textLight: "#ffffff",
   gray: "#a6a6a6",
   lightGray: "#dddddd",
-  Blue: "#4d88d1",
+  blue: "#4d88d1",
   lightBlue: "#c0d5ef",
   danger: "#bd0000",
   bronze: "#eda75e",
