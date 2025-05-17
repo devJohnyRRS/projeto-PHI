@@ -4,7 +4,7 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import theme from "../../assets/themes/THEMES";
 import CustomButton from "../../components/customButton/CustomButton";
 import { styles } from "./styles";
-import CustomImput from "../../components/customInput/CustomImput";
+import CustomImput from "../../components/customInput/CustomInput";
 import { CheckSquare, Eye, EyeSlash, Square } from "phosphor-react-native";
 import { useTypedNavigation } from "../../hooks/useNavigate";
 
