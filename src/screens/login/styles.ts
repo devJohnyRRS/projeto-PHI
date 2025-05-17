@@ -41,4 +41,8 @@ export const styles = StyleSheet.create({
   forms: {
     gap: 27,
   },
+  cadastroButton: {
+    color: theme.colors.primary,
+    fontFamily: theme.fonts.medium,
+  },
 });

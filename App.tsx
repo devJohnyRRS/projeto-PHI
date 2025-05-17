@@ -1,17 +1,18 @@
 // App.js
-import React, { useEffect } from 'react';
-import { View } from 'react-native';
-import * as SplashScreen from 'expo-splash-screen';
+import React, { useEffect } from "react";
+import AppRoutes from "./src/routes/MainStack";
+import { NavigationContainer } from "@react-navigation/native";
+import * as SplashScreen from "expo-splash-screen";
 import {
   useFonts,
   Poppins_300Light,
   Poppins_400Regular,
   Poppins_500Medium,
   Poppins_600SemiBold,
-  Poppins_700Bold
-} from '@expo-google-fonts/poppins';
+  Poppins_700Bold,
+} from "@expo-google-fonts/poppins";
 
-import Login from './src/screens/login/Login';
+import Login from "./src/screens/login/Login";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -21,7 +22,7 @@ export default function App() {
     Poppins_400Regular,
     Poppins_500Medium,
     Poppins_600SemiBold,
-    Poppins_700Bold
+    Poppins_700Bold,
   });
 
   useEffect(() => {
@@ -35,6 +36,8 @@ export default function App() {
   }
 
   return (
-      <Login />
+    <NavigationContainer>
+      <AppRoutes />
+    </NavigationContainer>
   );
 }

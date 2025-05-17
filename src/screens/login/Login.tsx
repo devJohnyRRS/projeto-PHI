@@ -5,6 +5,7 @@ import theme from "../../assets/themes/THEMES";
 import CustomButton from "../../components/customButton/CustomButton";
 import { styles } from "./styles";
 import CustomImput from "../../components/customInput/CustomImput";
+import { CheckSquare, Square } from "phosphor-react-native";
 
 const favIcon = require("../../../assets/favicon.png");
 const spashIcon = require("../../../assets/splash-icon.png");
@@ -15,6 +16,7 @@ export default function Login() {
   const [senha, setSenha] = useState("");
   const [erroEmail, setErroEmail] = useState(false);
   const [erroSenha, setErroSenha] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
 
   function handleLogin() {
     let erro = false;
@@ -88,10 +90,17 @@ export default function Login() {
               justifyContent: "space-between",
               flexDirection: "row",
               marginTop: 13,
+              marginLeft: 20,
             }}
           >
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setRememberMe(!rememberMe)}>
+              {rememberMe ? (
+                <CheckSquare size={20} style={{ position: "absolute", left: -23 }} />
+              ) : (
+                <Square size={20} style={{ position: "absolute", left: -23 }} />
+              )}
               <Text>Lembrar de mim</Text>
+              
             </TouchableOpacity>
             <TouchableOpacity>
               <Text>Esqueceu a senha?</Text>
@@ -100,12 +109,7 @@ export default function Login() {
           <View style={styles.ButtonContainer}>
             <CustomButton title="Entrar" onPress={handleLogin} />
             <TouchableOpacity>
-              <Text
-                style={{
-                  color: theme.colors.primary,
-                  fontFamily: theme.fonts.medium,
-                }}
-              >
+              <Text style={styles.cadastroButton}>
                 Não tem uma conta? Cadastre-se
               </Text>
             </TouchableOpacity>
