@@ -6,12 +6,13 @@ import CustomButton from "../../components/customButton/CustomButton";
 import { styles } from "./styles";
 import CustomImput from "../../components/customInput/CustomImput";
 import { CheckSquare, Square } from "phosphor-react-native";
+import { useTypedNavigation } from "../../hooks/useNavigate";
 
 const favIcon = require("../../../assets/favicon.png");
 const spashIcon = require("../../../assets/splash-icon.png");
 const peopleIcon = require("../../../assets/people.png");
-
 export default function Login() {
+  const navigation = useTypedNavigation();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erroEmail, setErroEmail] = useState(false);
@@ -37,6 +38,10 @@ export default function Login() {
       console.log("Login efetuado!");
     }
   }
+
+  const handleToCadastro = () => {
+    navigation.navigate("Cadastro");
+  };
   return (
     <>
       <ScrollView style={styles.scrollContainer}>
@@ -95,12 +100,14 @@ export default function Login() {
           >
             <TouchableOpacity onPress={() => setRememberMe(!rememberMe)}>
               {rememberMe ? (
-                <CheckSquare size={20} style={{ position: "absolute", left: -23 }} />
+                <CheckSquare
+                  size={20}
+                  style={{ position: "absolute", left: -23 }}
+                />
               ) : (
                 <Square size={20} style={{ position: "absolute", left: -23 }} />
               )}
               <Text>Lembrar de mim</Text>
-              
             </TouchableOpacity>
             <TouchableOpacity>
               <Text>Esqueceu a senha?</Text>
@@ -108,7 +115,7 @@ export default function Login() {
           </View>
           <View style={styles.ButtonContainer}>
             <CustomButton title="Entrar" onPress={handleLogin} />
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleToCadastro}>
               <Text style={styles.cadastroButton}>
                 Não tem uma conta? Cadastre-se
               </Text>
