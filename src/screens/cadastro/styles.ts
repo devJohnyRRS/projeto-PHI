@@ -52,4 +52,29 @@ export const styles = StyleSheet.create({
     right: 10,
     zIndex: 1,
   },
+  termosContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginVertical: 20,
+  },
+  textTermosOne: {
+    fontSize: 14,
+    color: theme.colors.text,
+    marginLeft: 10,
+  },
+  textTermosTwo: {
+    fontSize: 14,
+    color: theme.colors.primary,
+  },
+  ButtonContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 20,
+    gap: 20,
+  },
+  backButtonText: {
+    fontSize: 14,
+    color: theme.colors.primary,
+    fontFamily: theme.fonts.medium, 
+  }
 });

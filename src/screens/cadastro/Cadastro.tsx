@@ -1,14 +1,18 @@
-import { View, Text, ScrollView, Image } from "react-native";
+import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { styles } from "./styles";
 import CustomImput from "../../components/customInput/CustomInput";
 import theme from "../../assets/themes/THEMES";
 import { ddds } from "../../utils/dddList";
 import DropDownPicker from "react-native-dropdown-picker";
+import { CheckSquare, Square } from "phosphor-react-native";
+import CustomButton from "../../components/customButton/CustomButton";
+import { useTypedNavigation } from "../../hooks/useNavigate";
 
 const favIcon = require("../../../assets/favicon.png");
 
 export default function Cadastro() {
+  const navigation = useTypedNavigation();
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState(
@@ -19,13 +23,19 @@ export default function Cadastro() {
   const [numeroTelefonico, setNumeroTelefonico] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+  const [aceitarTermos, setAceitarTermos] = useState(false);
   const [erroNome, setErroNome] = useState(false);
   const [erroSobrenome, setErroSobrenome] = useState(false);
   const [erroNumero, setErroNumero] = useState(false);
   const [erroEmail, setErroEmail] = useState(false);
   const [erroSenha, setErroSenha] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [erroConfirmarSenha, setErroConfirmarSenha] = useState(false);
+
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <>
       <ScrollView style={styles.scrollContainer}>
@@ -72,7 +82,7 @@ export default function Cadastro() {
                   setOpen={setOpen}
                   setValue={setValue}
                   setItems={setItems}
-                  placeholder="DDD"
+                  placeholder="DDI"
                   listMode="MODAL"
                 />
               </View>
@@ -86,6 +96,41 @@ export default function Cadastro() {
                 errorMessage="Preencha o número"
               />
             </View>
+            <CustomImput
+              placeholder="Criar Senha"
+              placeholderTextColor={theme.colors.text}
+              value={senha}
+              onChangeText={setSenha}
+              error={erroSenha}
+              errorMessage="Preencha a senha"
+            />
+            <CustomImput
+              placeholder="Confirme a Senha"
+              placeholderTextColor={theme.colors.text}
+              value={confirmarSenha}
+              onChangeText={setConfirmarSenha}
+              error={erroConfirmarSenha}
+              errorMessage="Preencha o confirmar senha"
+            />
+          </View>
+          <TouchableOpacity
+            style={styles.termosContainer}
+            onPress={() => setAceitarTermos(!aceitarTermos)}
+          >
+            {aceitarTermos ? <CheckSquare size={20} /> : <Square size={20} />}
+            <Text style={styles.textTermosOne}>Eu concordo com os</Text>
+            <Text style={styles.textTermosTwo}> Termos e condições</Text>
+          </TouchableOpacity>
+          <View style={styles.ButtonContainer}>
+            <CustomButton
+              title="Cadastrar"
+              onPress={() => console.log("Receba")}
+            />
+            <TouchableOpacity onPress={handleGoBack}>
+              <Text style={styles.backButtonText}>
+                Já tem uma conta? Faça login
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
