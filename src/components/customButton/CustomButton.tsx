@@ -1,12 +1,13 @@
-import { View, Text, Button, TouchableOpacity } from "react-native";
 import React from "react";
+import { Text, TouchableOpacity, ViewStyle } from "react-native";
 import { styles } from "./styles";
 
 interface CustomButtonProps {
-  title: string;
+  title?: string;
   onPress: () => void;
   disabled?: boolean;
-  style?: object;
+  style?: ViewStyle;
+  children?: React.ReactNode;
 }
 
 export default function CustomButton({
@@ -14,6 +15,7 @@ export default function CustomButton({
   onPress,
   disabled,
   style,
+  children,
 }: CustomButtonProps) {
   return (
     <TouchableOpacity
@@ -21,7 +23,11 @@ export default function CustomButton({
       disabled={disabled}
       style={[styles.buttonContainer, style]}
     >
-      <Text style={styles.text}>{title}</Text>
+      {children ? (
+        children
+      ) : (
+        <Text style={styles.text}>{title}</Text>
+      )}
     </TouchableOpacity>
   );
 }

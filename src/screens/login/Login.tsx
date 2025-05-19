@@ -41,6 +41,7 @@ export default function Login() {
 
   const handleToCadastro = () => {
     navigation.navigate("Cadastro");
+    navigation.navigate("Home");
   };
   return (
     <>

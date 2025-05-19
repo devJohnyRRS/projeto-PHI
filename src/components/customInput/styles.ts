@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     marginBottom: 4,
     color: theme.colors.text,
     fontFamily: theme.fonts.regular,
+    backgroundColor: theme.colors.textLight,
   },
   errorText: {
     color: theme.colors.danger,
