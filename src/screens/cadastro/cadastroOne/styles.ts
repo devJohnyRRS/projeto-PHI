@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import theme from "../../assets/themes/THEMES";
+import theme from "../../../assets/themes/THEMES";
 
 export const styles = StyleSheet.create({
   favIcon: {

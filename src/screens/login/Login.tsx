@@ -41,7 +41,7 @@ export default function Login() {
   }
 
   const handleToCadastro = () => {
-    navigation.navigate("Cadastro");
+    navigation.navigate("CadastroOne");
   };
   return (
     <>

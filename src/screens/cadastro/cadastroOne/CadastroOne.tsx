@@ -1,17 +1,17 @@
 import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { styles } from "./styles";
-import CustomImput from "../../components/customInput/CustomInput";
-import theme from "../../assets/themes/THEMES";
-import { ddds } from "../../utils/dddList";
+import CustomImput from "../../../components/customInput/CustomInput";
+import theme from "../../../assets/themes/THEMES";
+import { ddds } from "../../../utils/dddList";
 import DropDownPicker from "react-native-dropdown-picker";
 import { CheckSquare, Square } from "phosphor-react-native";
-import CustomButton from "../../components/customButton/CustomButton";
-import { useTypedNavigation } from "../../hooks/useNavigate";
+import CustomButton from "../../../components/customButton/CustomButton";
+import { useTypedNavigation } from "../../../hooks/useNavigate";
 
-const favIcon = require("../../../assets/favicon.png");
+const favIcon = require("../../../../assets/favicon.png");
 
-export default function Cadastro() {
+export default function CadastroOne() {
   const navigation = useTypedNavigation();
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -31,6 +31,62 @@ export default function Cadastro() {
   const [erroEmail, setErroEmail] = useState(false);
   const [erroSenha, setErroSenha] = useState(false);
   const [erroConfirmarSenha, setErroConfirmarSenha] = useState(false);
+  const [erroDDD, setErroDDD] = useState(false);
+
+  const handleCadastro = () => {
+    let erro = false;
+
+    if (!value) {
+      setErroDDD(true);
+      erro = true;
+    } else {
+      setErroDDD(false);
+    }
+    if (!nome) {
+      setErroNome(true);
+      erro = true;
+    } else {
+      setErroNome(false);
+    }
+    if (!sobrenome) {
+      setErroSobrenome(true);
+      erro = true;
+    } else {
+      setErroSobrenome(false);
+    }
+    if (!numeroTelefonico) {
+      setErroNumero(true);
+      erro = true;
+    } else {
+      setErroNumero(false);
+    }
+    if (!email) {
+      setErroEmail(true);
+      erro = true;
+    } else {
+      setErroEmail(false);
+    }
+    if (!senha) {
+      setErroSenha(true);
+      erro = true;
+    } else {
+      setErroSenha(false);
+    }
+    if (!confirmarSenha) {
+      setErroConfirmarSenha(true);
+      erro = true;
+    } else {
+      setErroConfirmarSenha(false);
+    }
+    if (!aceitarTermos) {
+      alert("Você deve aceitar os termos e condições");
+      erro = true;
+    }
+
+    if (!erro) {
+      navigation.navigate("CadastroTwo");
+    }
+  };
 
   const handleGoBack = () => {
     navigation.goBack();
@@ -85,6 +141,18 @@ export default function Cadastro() {
                   placeholder="DDI"
                   listMode="MODAL"
                 />
+                {erroDDD && (
+                  <Text
+                    style={{
+                      color: theme.colors.danger,
+                      fontSize: 12,
+                      marginLeft: 4,
+                      marginTop: 2,
+                    }}
+                  >
+                    Selecione o DDD
+                  </Text>
+                )}
               </View>
               <CustomImput
                 placeholder="Número"
@@ -101,6 +169,7 @@ export default function Cadastro() {
               placeholderTextColor={theme.colors.text}
               value={senha}
               onChangeText={setSenha}
+              secureTextEntry
               error={erroSenha}
               errorMessage="Preencha a senha"
             />
@@ -109,6 +178,7 @@ export default function Cadastro() {
               placeholderTextColor={theme.colors.text}
               value={confirmarSenha}
               onChangeText={setConfirmarSenha}
+              secureTextEntry
               error={erroConfirmarSenha}
               errorMessage="Preencha o confirmar senha"
             />
@@ -122,10 +192,7 @@ export default function Cadastro() {
             <Text style={styles.textTermosTwo}> Termos e condições</Text>
           </TouchableOpacity>
           <View style={styles.ButtonContainer}>
-            <CustomButton
-              title="Cadastrar"
-              onPress={() => console.log("Receba")}
-            />
+            <CustomButton title="Cadastrar" onPress={handleCadastro} />
             <TouchableOpacity onPress={handleGoBack}>
               <Text style={styles.backButtonText}>
                 Já tem uma conta? Faça login
