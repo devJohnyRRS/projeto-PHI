@@ -12,7 +12,8 @@ import {
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
 
-import Login from "./src/screens/login/Login";
+import { PaperProvider } from 'react-native-paper';
+import { NotificationProvider } from "./src/context/NotificacaoContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -37,7 +38,11 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <AppRoutes />
+      <NotificationProvider>
+        <PaperProvider>
+          <AppRoutes />
+        </PaperProvider>
+      </NotificationProvider>
     </NavigationContainer>
   );
 }
