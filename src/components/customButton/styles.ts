@@ -1,13 +1,13 @@
-import { StyleSheet } from "react-native";
-import theme from "../../assets/themes/THEMES";
+import { StyleSheet } from 'react-native';
+import theme from '../../assets/themes/THEMES';
 
 export const styles = StyleSheet.create({
   buttonContainer: {
     width: 300,
     height: 50,
     borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: theme.colors.blue,
   },
   text: {

@@ -22,7 +22,7 @@ export default function CustomImput({
       : theme.fonts.regular;
 
   return (
-    <View style={{ width: "100%" }}>
+    <View style={{ width: "100%", position: 'relative' }}>
       <TextInput
         style={[
           styles.input,
