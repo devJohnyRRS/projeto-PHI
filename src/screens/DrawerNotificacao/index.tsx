@@ -81,18 +81,19 @@ export default function DrawerNotificacao({ visible, onClose }: DrawerNotificaca
                 <Pressable style={styles.overlay} onPress={onClose} />
 
                 <Animated.View style={[styles.drawer, { transform: [{ translateX }] }]}>
-                    <View style={{ flex: 1, marginTop: 24 }}>
+                    <View style={{ flex: 1, marginTop: 24, gap: 5 }}>
+
                         <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold' }}>
                             Notificações
                         </Text>
 
-                        <TouchableOpacity onPress={handleSeenNotifications}>
-                            <Text style={{ color: theme.colors.gray, fontSize: 13, marginBottom: 12 }}>
+                        <TouchableOpacity onPress={handleSeenNotifications} style={{ paddingBottom: 5 }}>
+                            <Text style={{ color: theme.colors.gray, fontSize: 13 }}>
                                 Ler todas
                             </Text>
                         </TouchableOpacity>
 
-                        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 40 }}>
+                        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 15 }} showsVerticalScrollIndicator={false}>
                             {notifications.map((notification) => (
                                 <TouchableOpacity
                                     key={notification.id}

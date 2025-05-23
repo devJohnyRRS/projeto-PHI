@@ -19,14 +19,18 @@ export default function PerfilHeader() {
 
     const toggleDrawer = () => setDrawerVisible(prev => !prev);
 
+    const handleNavigate = () => {
+        navigation.navigate("Perfil");
+    };
+
     return (
         <>
             <View style={{
                 width: '100%',
                 height: 230,
                 backgroundColor: theme.colors.secondary,
-                borderBottomEndRadius: 20,
-                borderBottomStartRadius: 20,
+                borderBottomEndRadius: 25,
+                borderBottomStartRadius: 25,
                 padding: 24,
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -35,7 +39,7 @@ export default function PerfilHeader() {
                 <Image source={icon} style={{ width: 50, height: 50, alignSelf: 'flex-start' }} />
 
                 <View style={{ justifyContent: 'space-between', alignItems: 'center', width: '100%', flexDirection: 'row', }}>
-                    <FotoPerfil name='Gustavo Souza' username='@GustavoSouza1304' image={profile} type='light' onPress={() => navigation.navigate("Perfil")} />
+                    <FotoPerfil name='Gustavo Souza' username='@GustavoSouza1304' image={profile} type='light' onPress={() => handleNavigate()} />
                     <TouchableOpacity onPress={toggleDrawer}>
                         {hasNewNotifications ? (
                             <BellSimpleRinging color={theme.colors.textLight} weight='fill' />

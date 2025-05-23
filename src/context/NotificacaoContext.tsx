@@ -30,6 +30,11 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ 
         { id: '11', name: '🎓 Certificado disponível para download.', visualized: false },
         { id: '12', name: '⏰ Lembrete: atividade vence amanhã.', visualized: false },
         { id: '13', name: '🔒 Sua conta foi acessada de outro dispositivo.', visualized: true },
+        { id: '14', name: '💬 Mensagem recebida de @Ana.', visualized: false },
+        { id: '15', name: '📥 Feedback do professor disponível.', visualized: true },
+        { id: '16', name: '🎓 Certificado disponível para download.', visualized: false },
+        { id: '17', name: '⏰ Lembrete: atividade vence amanhã.', visualized: false },
+        { id: '18', name: '🔒 Sua conta foi acessada de outro dispositivo.', visualized: true },
     ]);
 
     const hasNewNotifications = notifications.some(n => !n.visualized);
