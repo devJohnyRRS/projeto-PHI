@@ -15,6 +15,10 @@ interface PostCardProps {
         comments: number;
         likes: number;
         dislikes: number;
+        questionTag?: {
+            color: string;
+            code: string;
+        }
     };
 }
 
@@ -45,6 +49,12 @@ function PostCard({ post }: PostCardProps) {
             </View>
 
             <Text style={{ fontSize: 10, textAlign: 'right' }}>{post.time}</Text>
+
+            {post.questionTag && (
+                <View style={{ backgroundColor: post.questionTag.color, padding: 8, borderRadius: 5, marginTop: 10 }}>
+                    <Text>Questão {post.questionTag.code}</Text>
+                </View>
+            )}
 
             <View style={{ marginTop: 10, gap: 10 }}>
                 <Text style={{ fontSize: 16 }}>{post.content}</Text>

@@ -1,4 +1,4 @@
-import { Text, View, Image, ImageSourcePropType } from 'react-native';
+import { Text, View, Image, ImageSourcePropType, Button, TouchableOpacity } from 'react-native';
 import theme from "../../assets/themes/THEMES";
 
 interface FotoPerfilProps {
@@ -6,6 +6,7 @@ interface FotoPerfilProps {
     username: string;
     image: ImageSourcePropType;
     border?: string;
+    onPress?: () => void;
     type?: 'light' | 'dark';
 }
 
@@ -14,6 +15,7 @@ function FotoPerfil({
     username,
     image,
     border,
+    onPress,
     type = 'dark',
 }: FotoPerfilProps) {
     return (
@@ -24,24 +26,26 @@ function FotoPerfil({
             alignContent: 'center',
             alignItems: 'center'
         }}>
-            <View style={{
-                width: 40,
-                height: 40,
-                borderRadius: 20,
-                overflow: 'hidden',
-                backgroundColor: border ?? 'transparent',
-                padding: 2
-            }}>
-                <Image
-                    source={image}
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        resizeMode: 'contain',
-                        borderRadius: 20,
-                    }}
-                />
-            </View>
+            <TouchableOpacity onPress={onPress}>
+                <View style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 20,
+                    overflow: 'hidden',
+                    backgroundColor: border ?? 'transparent',
+                    padding: 2
+                }}>
+                    <Image
+                        source={image}
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            resizeMode: 'contain',
+                            borderRadius: 20,
+                        }}
+                    />
+                </View>
+            </TouchableOpacity>
 
             <View style={{ gap: type === 'light' ? 4 : 0 }}>
                 <Text style={{ color: type === 'light' ? theme.colors.textLight : theme.colors.text, fontWeight: 'bold', fontSize: 16 }}>

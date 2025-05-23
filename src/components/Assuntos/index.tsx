@@ -1,6 +1,7 @@
 import { ScrollView } from 'react-native-gesture-handler';
 import PostCard from '../PostCard';
 import { View } from 'react-native';
+import theme from '../../assets/themes/THEMES';
 
 const profileImage = require('../../../assets/gustavo.png');
 
@@ -16,6 +17,10 @@ const mockPosts = [
         comments: 589,
         likes: 5000,
         dislikes: 1,
+        questionTag: {
+            color: theme.colors.lightBlue,
+            code: '#M18790',
+        },
     },
     {
         id: 2,
