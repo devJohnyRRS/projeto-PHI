@@ -1,12 +1,12 @@
 import { ScrollView, Text, View } from 'react-native';
 import theme from "../../assets/themes/THEMES";
-import { PencilSimple, SlidersHorizontal } from "phosphor-react-native";
-import CustomButton from '../../components/customButton/CustomButton';
+import { SlidersHorizontal } from "phosphor-react-native";
 import Assuntos from '../../components/Assuntos';
 import PerfilHeader from '../../components/PerfilHeader';
 import Carrosel from '../../components/Carrossel';
+import AssuntoButton from '../../components/AssuntoButton';
 
-function Home() {
+export default function Home() {
 
     return (
         <ScrollView style={{ flex: 1, backgroundColor: theme.colors.background }}>
@@ -17,24 +17,9 @@ function Home() {
 
                 <Carrosel />
 
-                <CustomButton
-                    onPress={() => console.log('ver mais')}
-                    style={{
-                        backgroundColor: theme.colors.primary,
-                        borderRadius: 10,
-                        flexDirection: 'row',
-                        gap: 5,
-                        width: 170,
-                        // height: 50,
-                    }}
-                >
-                    <PencilSimple color={theme.colors.textLight} size={20} weight='fill' />
-                    <Text style={{ color: theme.colors.textLight, fontSize: 16, fontWeight: 'bold' }}>
-                        Criar assunto
-                    </Text>
-                </CustomButton>
+                <AssuntoButton />
 
-                <View style={{ flexDirection: 'row', gap: 10 }}>
+                <View style={{ flexDirection: 'row', gap: 5 }}>
                     <SlidersHorizontal
                         color={theme.colors.text}
                         size={24}
@@ -53,5 +38,3 @@ function Home() {
 
     )
 }
-
-export default Home
