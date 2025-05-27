@@ -1,10 +1,17 @@
-import { View, Text, ScrollView, Image } from "react-native";
+import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import React, { useEffect, useMemo, useState } from "react";
 import { styles } from "./styles";
+import CustomButton from "../../customButton/CustomButton";
 
 const favIcon = require("../../../../assets/favicon.png");
 
-const dias = Array.from({ length: 31 }, (_, i) => i + 1);
+interface SecaoUmProps {
+  onAvancar: (
+    tipo: "proxima" | "pular",
+    data?: { dia: number; mes: number; ano: number }
+  ) => void;
+}
+
 const meses = [
   "Janeiro",
   "Fevereiro",
@@ -27,7 +34,7 @@ function getDiasNoMes(mes: number, ano: number) {
   return new Date(ano, mes + 1, 0).getDate();
 }
 
-export default function SecaoUm() {
+export default function SecaoUm({ onAvancar }: SecaoUmProps) {
   const [dia, setDia] = useState(1);
   const [mes, setMes] = useState(0);
   const [ano, setAno] = useState(anoAtual);
@@ -43,7 +50,15 @@ export default function SecaoUm() {
     const maxDia = getDiasNoMes(mes, ano);
     if (dia > maxDia) setDia(maxDia);
   }, [mes, ano]);
-  
+
+  const handlePular = () => {
+    onAvancar("pular");
+  };
+
+  const handleArmazenarData = () => {
+    onAvancar("proxima", { dia, mes: mes + 1, ano });
+  };
+
   return (
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.container}>
@@ -116,6 +131,16 @@ export default function SecaoUm() {
               ))}
             </ScrollView>
           </View>
+        </View>
+        <View style={styles.footerContainer}>
+          <CustomButton
+            title="Próxima"
+            onPress={handleArmazenarData}
+            style={{ width: 200 }}
+          />
+          <TouchableOpacity onPress={handlePular}>
+            <Text style={styles.pularButton}>Pular</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>

@@ -5,8 +5,6 @@ export const styles = StyleSheet.create({
   favIcon: {
     width: 50,
     height: 50,
-    alignSelf: "center",
-    marginBottom: 12,
   },
   container: {
     flex: 1,
@@ -24,13 +22,13 @@ export const styles = StyleSheet.create({
     gap: 8,
   },
   textHeaderOne: {
-    fontSize: 22,
+    fontSize: 28,
     color: theme.colors.text,
     fontFamily: theme.fonts.bold,
     textAlign: "center",
   },
   textHeaderTwo: {
-    fontSize: 22,
+    fontSize: 28,
     color: theme.colors.primary,
     fontFamily: theme.fonts.bold,
     textAlign: "center",
@@ -40,7 +38,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "flex-start",
     gap: 12,
-    marginTop: 12,
+    marginTop: 100,
     backgroundColor: theme.colors.white,
     borderRadius: 14,
     paddingVertical: 8,
@@ -88,5 +86,14 @@ export const styles = StyleSheet.create({
     color: theme.colors.primary,
     fontFamily: theme.fonts.bold,
     backgroundColor: theme.colors.lightBlue,
+  },
+  footerContainer: {
+    marginTop: 160,
+    gap: 19,
+    alignItems: "center",
+  },
+  pularButton: {
+    color: theme.colors.primary,
+    fontFamily: theme.fonts.medium,
   },
 });

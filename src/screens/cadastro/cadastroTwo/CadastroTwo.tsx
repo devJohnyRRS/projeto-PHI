@@ -9,14 +9,21 @@ import { ScrollView } from "react-native-gesture-handler";
 export default function CadastroTwo() {
   const [step, setStep] = useState(1);
 
+  function handleAvancar(
+    tipo: "proxima" | "pular",
+    data?: { dia: number; mes: number; ano: number }
+  ) {
+    setStep((prev) => prev + 1);
+  }
+
   function renderSection() {
     switch (step) {
       case 1:
-        return <SecaoUm />;
+        return <SecaoUm onAvancar={handleAvancar} />;
       // case 2: return <SecaoDois />;
       // case 3: return <SecaoTres />;
       default:
-        return <SecaoUm />;
+        return <SecaoUm onAvancar={handleAvancar}/>;
     }
   }
 
