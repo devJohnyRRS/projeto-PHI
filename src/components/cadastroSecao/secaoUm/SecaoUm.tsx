@@ -61,8 +61,8 @@ export default function SecaoUm({ onAvancar }: SecaoUmProps) {
 
   return (
     <ScrollView style={styles.scrollContainer}>
+      <Image source={favIcon} style={styles.favIcon} />
       <View style={styles.container}>
-        <Image source={favIcon} style={styles.favIcon} />
         <View style={styles.headerContainer}>
           <Text style={styles.textHeaderOne}>Qual a sua data de </Text>
           <Text style={styles.textHeaderTwo}>nascimento?</Text>

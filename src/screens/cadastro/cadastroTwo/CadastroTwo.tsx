@@ -4,6 +4,7 @@ import SecaoUm from "../../../components/cadastroSecao/secaoUm/SecaoUm";
 import { styles } from "./styles";
 import { ScrollView } from "react-native-gesture-handler";
 import SecaoDois from "../../../components/cadastroSecao/secaoDois/SecaoDois";
+import SecaoTres from "../../../components/cadastroSecao/secaoTres/SecaoTres";
 // import SecaoDois from "...";
 // import SecaoTres from "...";
 
@@ -27,14 +28,32 @@ export default function CadastroTwo() {
   ) {
     setStep((prev) => prev + 1);
   }
-  
+
+  function handleAvancarMateriaFavorita(
+    tipo: "proxima" | "pular",
+    escolaridade?:
+      | "História"
+      | "Português"
+      | "Matemática"
+      | "Física"
+      | "Inglês"
+      | "Biologia"
+      | "Geografia"
+      | "Química"
+      | "Artes"
+      | "Filosofia"
+  ) {
+    setStep((prev) => prev + 1);
+  }
+
   function renderSection() {
     switch (step) {
       case 1:
         return <SecaoUm onAvancar={handleAvancarDataAniversario} />;
       case 2:
-        return <SecaoDois onAvancar={handleAvancarEscolaridade}/>;
-      // case 3: return <SecaoTres />;
+        return <SecaoDois onAvancar={handleAvancarEscolaridade} />;
+      case 3:
+        return <SecaoTres onAvancar={handleAvancarMateriaFavorita}/>;
       default:
         return <SecaoUm onAvancar={handleAvancarDataAniversario} />;
     }

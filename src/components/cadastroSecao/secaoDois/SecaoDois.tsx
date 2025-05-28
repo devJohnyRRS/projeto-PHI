@@ -42,8 +42,8 @@ export default function SecaoDois({ onAvancar }: SecaoDoisProps) {
   };
   return (
     <ScrollView style={styles.scrollContainer}>
+      <Image source={favIcon} style={styles.favIcon} />
       <View style={styles.container}>
-        <Image source={favIcon} style={styles.favIcon} />
         <View style={styles.headerContainer}>
           <Text style={styles.textHeaderOne}>Qual seu nível de </Text>
           <Text style={styles.textHeaderTwo}>escolaridade?</Text>
