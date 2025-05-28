@@ -2,11 +2,11 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import FotoPerfil from '../FotoPerfil'
 import { BellSimple, BellSimpleRinging, MagnifyingGlass } from 'phosphor-react-native'
-import CustomImput from '../customInput/CustomImput'
 import theme from '../../assets/themes/THEMES'
 import { useTypedNavigation } from '../../hooks/useNavigate'
 import DrawerNotificacao from '../../screens/DrawerNotificacao'
 import { useNotifications } from '../../context/NotificacaoContext';
+import CustomImput from '../customInput/CustomInput'
 
 export default function PerfilHeader() {
     const icon = require("../../../assets/favicon.png");

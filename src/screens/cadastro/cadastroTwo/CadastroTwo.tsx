@@ -5,10 +5,12 @@ import { styles } from "./styles";
 import { ScrollView } from "react-native-gesture-handler";
 import SecaoDois from "../../../components/cadastroSecao/secaoDois/SecaoDois";
 import SecaoTres from "../../../components/cadastroSecao/secaoTres/SecaoTres";
+import { useTypedNavigation } from "../../../hooks/useNavigate";
 // import SecaoDois from "...";
 // import SecaoTres from "...";
 
 export default function CadastroTwo() {
+  const navigation = useTypedNavigation();
   const [step, setStep] = useState(1);
 
   function handleAvancarDataAniversario(
@@ -43,7 +45,7 @@ export default function CadastroTwo() {
       | "Artes"
       | "Filosofia"
   ) {
-    setStep((prev) => prev + 1);
+    navigation.navigate("Home");
   }
 
   function renderSection() {
@@ -53,7 +55,7 @@ export default function CadastroTwo() {
       case 2:
         return <SecaoDois onAvancar={handleAvancarEscolaridade} />;
       case 3:
-        return <SecaoTres onAvancar={handleAvancarMateriaFavorita}/>;
+        return <SecaoTres onAvancar={handleAvancarMateriaFavorita} />;
       default:
         return <SecaoUm onAvancar={handleAvancarDataAniversario} />;
     }
