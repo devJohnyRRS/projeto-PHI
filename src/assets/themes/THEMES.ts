@@ -14,6 +14,7 @@ export const colors = {
   danger: "#bd0000",
   bronze: "#eda75e",
   gold: "#ffd400",
+  white: "#ffffff",
 };
 
 export const fonts = {
