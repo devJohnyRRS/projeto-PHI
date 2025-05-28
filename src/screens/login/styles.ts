@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import theme from "../../assets/themes/THEMES";
+import { StyleSheet } from 'react-native';
+import theme from '../../assets/themes/THEMES';
 
 export const styles = StyleSheet.create({
   favIcon: {
@@ -9,17 +9,18 @@ export const styles = StyleSheet.create({
   peopleIconContainer: {
     width: 200,
     height: 150,
-    alignSelf: "center",
+    alignSelf: 'center',
     marginBottom: 30,
   },
   splashIconContainer: {
     width: 250,
     height: 110,
-    alignSelf: "center",
+    alignSelf: 'center',
   },
   container: {
     flex: 1,
-    padding: 31,
+    padding: 24,
+    marginTop: 8,
   },
   scrollContainer: {
     backgroundColor: theme.colors.background,
@@ -30,11 +31,11 @@ export const styles = StyleSheet.create({
     marginBottom: 30,
     color: theme.colors.text,
     fontFamily: theme.fonts.medium,
-    textAlign: "center",
+    textAlign: 'center',
   },
   ButtonContainer: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     marginVertical: 20,
     gap: 20,
   },

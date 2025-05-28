@@ -35,8 +35,7 @@ export default function Login() {
       setErroSenha(false);
     }
     if (!erro) {
-      // lógica de login
-      console.log("Login efetuado!");
+      navigation.navigate("Home");
     }
   }
 

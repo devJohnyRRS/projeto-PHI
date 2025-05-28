@@ -24,3 +24,4 @@ export const styles = StyleSheet.create({
     fontFamily: theme.fonts.regular,
   },
 });
+
