@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Login from "../screens/login/Login";
 import { MainStackParamList } from "../types/MainStackList";
 import Cadastro from "../screens/cadastro/Cadastro";
-import Home from '../screens/Home';
+import Home from '../screens/home';
 import Perfil from '../screens/Perfil';
 import Questoes from '../screens/Questoes';
 import Audios from '../screens/Audios';
