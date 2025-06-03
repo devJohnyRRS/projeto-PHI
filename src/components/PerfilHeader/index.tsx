@@ -10,7 +10,7 @@ import CustomImput from '../customInput/CustomInput'
 
 export default function PerfilHeader() {
     const icon = require("../../../assets/favicon.png");
-    const profile = require("../../../assets/gustavo.png");
+    const profile = require("../../../assets/default-profile.jpg");
 
     const navigation = useTypedNavigation();
     const [drawerVisible, setDrawerVisible] = useState(false);

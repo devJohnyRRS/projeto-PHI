@@ -6,39 +6,8 @@ import CustomButton from '../../components/customButton/CustomButton';
 import AssuntoButton from '../../components/AssuntoButton';
 import PostCard from '../../components/PostCard';
 import { useTypedNavigation } from '../../hooks/useNavigate';
-
-interface UserInformation {
-    name: string;
-    username: string;
-    title: string;
-    level: number;
-    rating: number;
-    questions: number;
-    followers: number;
-    following: number;
-    tag: string;
-    bio: string;
-    trophies: string[];
-    comments: number;
-    subjects: Post[];
-}
-
-interface Post {
-    id: number;
-    name: string;
-    username: string;
-    profileImage: any;
-    badge: string;
-    time: string;
-    content: string;
-    comments: number;
-    likes: number;
-    dislikes: number;
-    questionTag?: {
-        color: string;
-        code: string;
-    };
-}
+import { Post } from '../../types/Posts';
+import { UserInformation } from '../../types/UserInformation';
 
 export default function Perfil() {
     const navigation = useTypedNavigation();
@@ -54,15 +23,18 @@ export default function Perfil() {
     const mockPosts: Post[] = [
         {
             id: 1,
+            type: 'assunto',
             name: 'Gustavo Souza',
             username: '@GustavoSouza1304',
-            profileImage: profileImage,
-            badge: 'Análise e desenvolvimento',
-            time: '30min atrás',
-            content: 'Quem mais ta ansioso pro filme do FIFO 2: O Retorno?? Só eu?? 😂',
-            comments: 589,
-            likes: 5000,
-            dislikes: 1,
+            profileImage,
+            stats: {
+                badge: ['Análise e desenvolvimento'],
+                time: '30min atrás',
+                content: 'Quem mais ta ansioso pro filme do FIFO 2: O Retorno?? Só eu?? 😂',
+                comments: 589,
+                likes: 5000,
+                dislikes: 1,
+            },
             questionTag: {
                 color: theme.colors.lightBlue,
                 code: '#M18790',
@@ -70,66 +42,78 @@ export default function Perfil() {
         },
         {
             id: 2,
+            type: 'assunto',
             name: 'Gustavo Souza',
             username: '@GustavoSouza1304',
-            profileImage: profileImage,
-            badge: 'Mobile',
-            time: '1h atrás',
-            content: 'Hoje eu aprendi sobre React Native e estou amando! 🚀',
-            comments: 123,
-            likes: 1020,
-            dislikes: 0,
+            profileImage,
+            stats: {
+                badge: ['Mobile'],
+                time: '1h atrás',
+                content: 'Hoje eu aprendi sobre React Native e estou amando! 🚀',
+                comments: 123,
+                likes: 1020,
+                dislikes: 0,
+            },
         },
         {
             id: 3,
+            type: 'assunto',
             name: 'Gustavo Souza',
             username: '@GustavoSouza1304',
-            profileImage: profileImage,
-            badge: 'Ferramentas',
-            time: '2h atrás',
-            content: 'Qual IDE vocês preferem: VSCode ou WebStorm?',
-            comments: 87,
-            likes: 320,
-            dislikes: 5,
+            profileImage,
+            stats: {
+                badge: ['Ferramentas'],
+                time: '2h atrás',
+                content: 'Qual IDE vocês preferem: VSCode ou WebStorm?',
+                comments: 87,
+                likes: 320,
+                dislikes: 5,
+            },
         },
         {
             id: 4,
+            type: 'assunto',
             name: 'Gustavo Souza',
             username: '@GustavoSouza1304',
-            profileImage: profileImage,
-            badge: 'Lançamento',
-            time: '3h atrás',
-            content: 'Acabei de publicar meu primeiro app na Play Store 😍',
-            comments: 45,
-            likes: 700,
-            dislikes: 2,
+            profileImage,
+            stats: {
+                badge: ['Lançamento'],
+                time: '3h atrás',
+                content: 'Acabei de publicar meu primeiro app na Play Store 😍',
+                comments: 45,
+                likes: 700,
+                dislikes: 2,
+            },
         },
         {
             id: 5,
+            type: 'assunto',
             name: 'Gustavo Souza',
             username: '@GustavoSouza1304',
-            profileImage: profileImage,
-            badge: 'Design',
-            time: '4h atrás',
-            content: 'Alguém recomenda um curso top de UX Design?',
-            comments: 65,
-            likes: 280,
-            dislikes: 3,
+            profileImage,
+            stats: {
+                badge: ['Design'],
+                time: '4h atrás',
+                content: 'Alguém recomenda um curso top de UX Design?',
+                comments: 65,
+                likes: 280,
+                dislikes: 3,
+            },
         },
     ];
 
     const mockUser: UserInformation = {
-        name: "Gustavo Souza",
-        username: "@GustavoSouza1304",
-        title: "Aluno",
+        name: 'Gustavo Souza',
+        username: '@GustavoSouza1304',
+        title: 'Aluno',
         level: 1,
         rating: 2.4,
         questions: 10,
         followers: 10,
         following: 5,
-        tag: "História",
-        bio: "Apaixonado por História e tecnologia.",
-        trophies: ["Primeiro Acesso", "Conquistador de Tópicos"],
+        tag: 'História',
+        bio: 'Apaixonado por História e tecnologia.',
+        trophies: ['Primeiro Acesso', 'Conquistador de Tópicos'],
         comments: 12,
         subjects: mockPosts,
     };
@@ -261,7 +245,9 @@ export default function Perfil() {
                     <AssuntoButton style={{ marginBottom: 5 }} />
 
                     {mockUser.subjects.map((post) => (
-                        <PostCard key={post.id} post={post} />
+                        <PostCard key={post.id} post={post}>
+                            <Text style={{ fontSize: 16 }}>{post.stats.content}</Text>
+                        </PostCard>
                     ))}
                 </View>
             </View>

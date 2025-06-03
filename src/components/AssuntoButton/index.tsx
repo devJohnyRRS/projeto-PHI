@@ -3,11 +3,18 @@ import React from 'react'
 import theme from '../../assets/themes/THEMES'
 import CustomButton from '../customButton/CustomButton'
 import { Text } from 'react-native'
+import { useTypedNavigation } from '../../hooks/useNavigate'
 
 export default function AssuntoButton({ style }: any) {
+    const navigation = useTypedNavigation();
+
+    const handleNavigate = () => {
+        navigation.navigate("Banca");
+    };
+
     return (
         <CustomButton
-            onPress={() => console.log('ver mais')}
+            onPress={handleNavigate}
             style={{
                 ...style,
                 backgroundColor: theme.colors.primary,
