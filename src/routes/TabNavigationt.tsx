@@ -1,17 +1,91 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RoutesList } from "../types/TabNavigationList";
+import Home from "../screens/home";
+import Artigos from "../screens/Artigos";
+import Audios from "../screens/Audios";
+import Banca from "../screens/Banca";
+import Perfil from "../screens/Perfil";
+import Questoes from "../screens/Questoes";
+import Videos from "../screens/Videos";
+import {
+  BookOpen,
+  Calendar,
+  CalendarBlank,
+  House,
+  MusicNote,
+  Newspaper,
+  User,
+  Users,
+  VideoCamera,
+} from "phosphor-react-native";
+import theme from "../assets/themes/THEMES";
 
-const Tab = createBottomTabNavigator<RoutesList, 'TabNavigation'>();
+const Tab = createBottomTabNavigator<RoutesList, "TabNavigation">();
 
-export default function AppRoutes() {
+export default function AppTabs() {
   return (
     <>
-    // <Tab.Navigator id="TabNavigation" screenOptions={{ headerShown: false }}>
-    //   {/* <Tab.Screen name="Home" component={Home} /> */}
-    //   {/* <Tab.Screen name="Profile" component={Profile} /> */}
-    //   {/* Adicione outras abas aqui */}
-    // </Tab.Navigator>
+      <Tab.Navigator
+        id="TabNavigation"
+        screenOptions={({ route }) => ({
+          headerShown: false,
+          tabBarShowLabel: true,
+          tabBarActiveTintColor: theme.colors.primary,
+          tabBarInactiveTintColor: theme.colors.gray,
+          tabBarStyle: {
+            backgroundColor: theme.colors.white,
+            borderTopLeftRadius: 18,
+            borderTopRightRadius: 18,
+            height: 80,
+          },
+          tabBarIcon: ({ color, focused }) => {
+            switch (route.name) {
+              case "Home":
+                return (
+                  <House
+                    color={color}
+                    size={24}
+                    weight={focused ? "fill" : "regular"}
+                  />
+                );
+              case "Banca":
+                return (
+                  <CalendarBlank
+                    color={color}
+                    size={24}
+                    weight={focused ? "fill" : "regular"}
+                  />
+                );
+              case "Perfil":
+                return (
+                  <User
+                    color={color}
+                    size={24}
+                    weight={focused ? "fill" : "regular"}
+                  />
+                );
+              // Adicione as outras telas aqui, exemplo:
+              // case "Questoes":
+              //   return (
+              //     <BookOpen
+              //       color={color}
+              //       size={24}
+              //       weight={focused ? "fill" : "regular"}
+              //     />
+              //   );
+              default:
+                return null;
+            }
+          },
+        })}
+      >
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Banca" component={Banca} />
+        {/* Outras telas aqui, exemplo: */}
+        {/* <Tab.Screen name="Chat" component={Chat} /> */}
+        <Tab.Screen name="Perfil" component={Perfil} />
+      </Tab.Navigator>
     </>
   );
 }
