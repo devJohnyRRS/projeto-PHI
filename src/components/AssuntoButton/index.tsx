@@ -9,7 +9,7 @@ export default function AssuntoButton({ style }: any) {
     const navigation = useTypedNavigation();
 
     const handleNavigate = () => {
-        navigation.navigate("Banca");
+        navigation.navigate("Loja");
     };
 
     return (
