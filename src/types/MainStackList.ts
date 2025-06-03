@@ -1,6 +1,7 @@
 export type MainStackParamList = {
   Login: undefined;
-  Cadastro: undefined;
+  CadastroOne: undefined;
+  CadastroTwo: undefined;
   Home: undefined;
   Perfil: undefined;
   Banca: undefined;
