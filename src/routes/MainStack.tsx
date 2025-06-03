@@ -5,6 +5,10 @@ import { MainStackParamList } from "../types/MainStackList";
 import CadastroOne from "../screens/cadastro/cadastroOne/CadastroOne";
 import CadastroTwo from "../screens/cadastro/cadastroTwo/CadastroTwo";
 import AppTabs from "./TabNavigationt";
+import Artigos from "../screens/Artigos";
+import Audios from "../screens/Audios";
+import Questoes from "../screens/Questoes";
+import Videos from "../screens/Videos";
 
 const Stack = createStackNavigator<MainStackParamList, "MainStack">();
 
@@ -15,6 +19,10 @@ export default function AppNavigator() {
       <Stack.Screen name="CadastroOne" component={CadastroOne} />
       <Stack.Screen name="CadastroTwo" component={CadastroTwo} />
       <Stack.Screen name="Home" component={AppTabs} />
+      <Stack.Screen name="Questoes" component={Questoes} />
+      <Stack.Screen name="Audios" component={Audios} />
+      <Stack.Screen name="Videos" component={Videos} />
+      <Stack.Screen name="Artigos" component={Artigos} />
     </Stack.Navigator>
   );
 }

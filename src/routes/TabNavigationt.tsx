@@ -10,6 +10,8 @@ import Questoes from "../screens/Questoes";
 import Videos from "../screens/Videos";
 import {
   BookOpen,
+  Calendar,
+  CalendarBlank,
   House,
   MusicNote,
   Newspaper,
@@ -49,39 +51,7 @@ export default function AppTabs() {
                 );
               case "Banca":
                 return (
-                  <Users
-                    color={color}
-                    size={24}
-                    weight={focused ? "fill" : "regular"}
-                  />
-                );
-              case "Questoes":
-                return (
-                  <BookOpen
-                    color={color}
-                    size={24}
-                    weight={focused ? "fill" : "regular"}
-                  />
-                );
-              case "Audios":
-                return (
-                  <MusicNote
-                    color={color}
-                    size={24}
-                    weight={focused ? "fill" : "regular"}
-                  />
-                );
-              case "Videos":
-                return (
-                  <VideoCamera
-                    color={color}
-                    size={24}
-                    weight={focused ? "fill" : "regular"}
-                  />
-                );
-              case "Artigos":
-                return (
-                  <Newspaper
+                  <CalendarBlank
                     color={color}
                     size={24}
                     weight={focused ? "fill" : "regular"}
@@ -95,6 +65,15 @@ export default function AppTabs() {
                     weight={focused ? "fill" : "regular"}
                   />
                 );
+              // Adicione as outras telas aqui, exemplo:
+              // case "Questoes":
+              //   return (
+              //     <BookOpen
+              //       color={color}
+              //       size={24}
+              //       weight={focused ? "fill" : "regular"}
+              //     />
+              //   );
               default:
                 return null;
             }
@@ -103,10 +82,8 @@ export default function AppTabs() {
       >
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Banca" component={Banca} />
-        <Tab.Screen name="Questoes" component={Questoes} />
-        <Tab.Screen name="Audios" component={Audios} />
-        <Tab.Screen name="Videos" component={Videos} />
-        <Tab.Screen name="Artigos" component={Artigos} />
+        {/* Outras telas aqui, exemplo: */}
+        {/* <Tab.Screen name="Chat" component={Chat} /> */}
         <Tab.Screen name="Perfil" component={Perfil} />
       </Tab.Navigator>
     </>

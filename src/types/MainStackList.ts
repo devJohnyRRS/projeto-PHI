@@ -3,4 +3,8 @@ export type MainStackParamList = {
   CadastroOne: undefined;
   CadastroTwo: undefined;
   Home: undefined;
+  Questoes: undefined;
+  Audios: undefined;
+  Videos: undefined;
+  Artigos: undefined;
 };
