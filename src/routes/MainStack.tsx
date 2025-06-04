@@ -26,7 +26,7 @@ export default function AppNavigator() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="CadastroOne" component={CadastroOne} />
       <Stack.Screen name="CadastroTwo" component={CadastroTwo} />
-      {/* <Stack.Screen name="Home" component={AppTabs} /> */}
+      <Stack.Screen name="Home" component={AppTabs} />
       <Stack.Screen name="Questoes" component={Questoes} />
       <Stack.Screen name="Audios" component={Audios} />
       <Stack.Screen name="Videos" component={Videos} />
