@@ -6,4 +6,5 @@ export type MainStackParamList = {
   Perfil: undefined;
   App: undefined;
   Chat: undefined;
+  ChatPrivado: undefined;
 };

@@ -1,8 +1,9 @@
-import { Text, View } from 'react-native'
+import { Pressable, Text, View } from 'react-native'
 import FotoPerfil from '../FotoPerfil'
 import theme from "../../assets/themes/THEMES";
 import { DotsThreeOutlineVertical, ChatCircle, ThumbsUp, ThumbsDown, BookmarkSimple } from "phosphor-react-native";
 import Badge from '../Badge';
+import { useTypedNavigation } from '../../hooks/useNavigate';
 
 interface ChatCardProps {
     chat: {
@@ -16,7 +17,19 @@ interface ChatCardProps {
 
 function ChatCard({ chat }: ChatCardProps) {
 
+    const navigation = useTypedNavigation(); 
+
+    const handleNavigationChatPrivado = () => {
+            navigation.navigate("ChatPrivado");
+        };
+
     return (
+        <Pressable 
+        onPress={handleNavigationChatPrivado}
+        style={({ pressed }) => [
+        pressed && { opacity: 0.8 },
+      ]}
+    >
         <View
             style={{
                 backgroundColor: theme.colors.textLight,
@@ -56,6 +69,7 @@ function ChatCard({ chat }: ChatCardProps) {
                     </View>
                 </View>
             </View>
+            </Pressable>
     );
 }
 
