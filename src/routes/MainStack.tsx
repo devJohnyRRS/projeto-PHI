@@ -2,15 +2,16 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from '../screens/Login';
 import { MainStackParamList } from "../types/MainStackList";
-import CadastroOne from "../screens/cadastro/CadastroOne";
-import CadastroTwo from "../screens/cadastro/CadastroTwo";
+import CadastroOne from '../screens/cadastro/CadastroOne';
+import CadastroTwo from '../screens/cadastro/CadastroTwo';
+import AppTabs from "./TabNavigationt";
+import Artigos from "../screens/Artigos";
+import Audios from "../screens/Audios";
+import Questoes from "../screens/Questoes";
+import Videos from "../screens/Videos";
 import Home from '../screens/Home';
 import Perfil from "../screens/Perfil";
-import Questoes from '../screens/Questoes';
-import Audios from '../screens/Audios';
 import Banca from '../screens/Banca';
-import Videos from '../screens/Videos';
-import Artigos from '../screens/Artigos';
 import Loja from '../screens/Loja';
 import PapeisDeParede from '../screens/PapeisDeParede';
 import Icones from '../screens/Icones';
@@ -25,14 +26,11 @@ export default function AppNavigator() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="CadastroOne" component={CadastroOne} />
       <Stack.Screen name="CadastroTwo" component={CadastroTwo} />
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Banca" component={Banca} />
+      {/* <Stack.Screen name="Home" component={AppTabs} /> */}
       <Stack.Screen name="Questoes" component={Questoes} />
       <Stack.Screen name="Audios" component={Audios} />
       <Stack.Screen name="Videos" component={Videos} />
       <Stack.Screen name="Artigos" component={Artigos} />
-      <Stack.Screen name="Perfil" component={Perfil} />
-      <Stack.Screen name="Loja" component={Loja} />
       <Stack.Screen name="PapeisDeParede" component={PapeisDeParede} />
       <Stack.Screen name="Icones" component={Icones} />
       <Stack.Screen name="Molduras" component={Molduras} />
