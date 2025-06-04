@@ -3,10 +3,9 @@ import { StoreItem } from '../types/StoreItem';
 const image = require('../../assets/icone.jpg');
 const background = require('../../assets/vinao.jpg');
 
-export const mockItemsLoja: StoreItem[] = [
+export const mockPopularesLoja: StoreItem[] = [
   {
     id: 1,
-    image,
     type: 'moldura',
     title: 'Moldura Dourada',
     blocked: true,
@@ -34,7 +33,6 @@ export const mockItemsLoja: StoreItem[] = [
   },
   {
     id: 4,
-    image,
     type: 'moldura',
     title: 'Moldura Rubi',
     blocked: false,

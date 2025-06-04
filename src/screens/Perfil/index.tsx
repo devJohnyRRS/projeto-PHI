@@ -33,7 +33,7 @@ export default function Perfil() {
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginTop: 30 }}>
                     <TouchableOpacity onPress={handleGoBack} style={{ padding: 5 }}>
-                        <CaretLeft color={theme.colors.textLight} />
+                        <CaretLeft color={theme.colors.textLight} weight='bold' />
                     </TouchableOpacity>
                     <Gear color={theme.colors.textLight} weight='fill' />
                 </View>
@@ -131,13 +131,13 @@ export default function Perfil() {
                 </View>
             </View>
 
-            <View style={{ marginVertical: 10, marginHorizontal: 24, gap: 10 }}>
+            <View style={{ gap: 10, margin: 15, borderRadius: 5 }}>
                 <View style={{ flexDirection: 'row', gap: 5 }}>
                     <SlidersHorizontal />
                     <Text style={{ fontWeight: 'bold', fontSize: 16 }}>Meus assuntos</Text>
                 </View>
 
-                <View style={{ gap: 10, marginBottom: 35 }}>
+                <View style={{ gap: 10 }}>
                     {mockUserInformation.subjects.length === 0 && (
                         <Text style={{ fontSize: 13, color: theme.colors.gray }}>Parece que você não tem nenhum assunto no seu perfil :(</Text>
                     )}

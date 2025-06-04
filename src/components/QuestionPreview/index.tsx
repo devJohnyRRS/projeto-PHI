@@ -12,7 +12,7 @@ interface QuestionPreviewProps {
 
 export default function QuestionPreview({ color, code, title, description }: QuestionPreviewProps) {
     return (
-        <View style={{ paddingHorizontal: 24, paddingVertical: 10, backgroundColor: theme.colors.textLight, gap: 5 }}>
+        <View style={{ paddingHorizontal: 24, paddingVertical: 10, backgroundColor: theme.colors.textLight, gap: 5, borderRadius: 5 }}>
 
             <QuestionTag color={color} code={code} />
 

@@ -1,12 +1,11 @@
-import { Circle, User, SlidersHorizontal, Sticker, Stamp, BookmarkSimple, Coins } from 'phosphor-react-native'
+import { Circle, User, SlidersHorizontal, Sticker, Stamp } from 'phosphor-react-native'
 import React from 'react'
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import theme from '../../assets/themes/THEMES'
 import PerfilHeader from '../../components/PerfilHeader'
-import PostCard from '../../components/PostCard'
 import { useTypedNavigation } from '../../hooks/useNavigate'
 import LojaCard from '../../components/LojaCard'
-import { mockItemsLoja } from '../../Mocks/mockItemsLoja'
+import { mockPopularesLoja } from '../../Mocks/mockPopularesLoja'
 
 export default function Loja() {
 
@@ -24,14 +23,14 @@ export default function Loja() {
         <ScrollView style={{ flex: 1, backgroundColor: theme.colors.background }}>
             <PerfilHeader />
 
-            <View style={{ marginHorizontal: 24, gap: 10, marginBottom: 50, marginTop: 10 }}>
+            <View style={{ gap: 10, margin: 15, borderRadius: 5 }}>
                 <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold' }}>Loja</Text>
 
                 {/* Ícones de navegação */}
                 <View style={{ flexDirection: 'row', gap: 10 }}>
                     {[
-                        { icon: <Circle size={60} />, type: 'moldura', label: 'Moldura' },
-                        { icon: <Sticker size={60} weight='fill' />, type: ' papel', label: 'Papéis de parede' },
+                        { icon: <Circle size={60} />, type: 'moldura', label: 'Molduras' },
+                        { icon: <Sticker size={60} weight='fill' />, type: 'papel', label: 'Papéis de parede' },
                         { icon: <User size={60} weight='fill' />, type: 'icone', label: 'Ícones' },
                         { icon: <Stamp size={60} weight='fill' />, type: 'assinar', label: 'Assinar' },
                     ].map(({ icon, type, label }) => (
@@ -51,7 +50,7 @@ export default function Loja() {
                         <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold' }}>Populares</Text>
                     </View>
 
-                    {mockItemsLoja.map((item) => (
+                    {mockPopularesLoja.map((item) => (
                         <LojaCard
                             item={item}
                             key={item.id}

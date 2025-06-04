@@ -82,16 +82,16 @@ export default function Banca() {
         <ScrollView style={{ flex: 1, backgroundColor: theme.colors.background }}>
             <PerfilHeader />
 
-            <View style={{ marginHorizontal: 24, gap: 10, marginBottom: 50, marginTop: 10 }}>
+            <View style={{ gap: 10, margin: 15, borderRadius: 5 }}>
                 <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold' }}>Banca de estudos</Text>
 
                 {/* Ícones de navegação */}
                 <View style={{ flexDirection: 'row', gap: 10 }}>
                     {[
-                        { icon: <Video size={60} />, type: 'video', label: 'Vídeos' },
-                        { icon: <SpeakerSimpleHigh size={60} />, type: 'audio', label: 'Áudios' },
-                        { icon: <Newspaper size={60} />, type: 'artigo', label: 'Artigos' },
-                        { icon: <BookOpen size={60} />, type: 'questao', label: 'Questões' },
+                        { icon: <Video size={60} weight='fill' />, type: 'video', label: 'Vídeos' },
+                        { icon: <SpeakerSimpleHigh size={60} weight='fill' />, type: 'audio', label: 'Áudios' },
+                        { icon: <Newspaper size={60} weight='fill' />, type: 'artigo', label: 'Artigos' },
+                        { icon: <BookOpen size={60} weight='fill' />, type: 'questao', label: 'Questões' },
                     ].map(({ icon, type, label }) => (
                         <TouchableOpacity key={type} onPress={() => handleNavigate(type)} style={{ flex: 1, alignItems: 'center' }}>
                             <View style={{ backgroundColor: theme.colors.textLight, padding: 8, borderRadius: 10 }}>
