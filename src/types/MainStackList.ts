@@ -5,4 +5,5 @@ export type MainStackParamList = {
   Home: undefined;
   Perfil: undefined;
   App: undefined;
+  Chat: undefined;
 };

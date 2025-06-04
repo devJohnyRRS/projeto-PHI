@@ -3,11 +3,21 @@ import React from 'react'
 import theme from '../../assets/themes/THEMES'
 import CustomButton from '../customButton/CustomButton'
 import { Text } from 'react-native'
+import { useTypedNavigation } from '../../hooks/useNavigate'
+
 
 export default function AssuntoButton({ style }: any) {
+    const navigation = useTypedNavigation();
+
+const handleNavigationChat = () => {
+        navigation.navigate("Chat");
+    };
+
     return (
         <CustomButton
-            onPress={() => console.log('ver mais')}
+            onPress={() => handleNavigationChat()
+                //console.log('ver mais')
+                }
             style={{
                 ...style,
                 backgroundColor: theme.colors.primary,
