@@ -19,13 +19,13 @@ function ChatCard({ chat }: ChatCardProps) {
 
     const navigation = useTypedNavigation(); 
 
-    const handleNavigationChatPrivado = () => {
+    const handleNavigationChatPrivadoOne = () => {
             navigation.navigate("ChatPrivado");
         };
 
     return (
         <Pressable 
-        onPress={handleNavigationChatPrivado}
+        onPress={handleNavigationChatPrivadoOne}
         style={({ pressed }) => [
         pressed && { opacity: 0.8 },
       ]}
