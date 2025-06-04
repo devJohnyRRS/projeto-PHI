@@ -12,6 +12,10 @@ import Banca from '../screens/Banca';
 import Videos from '../screens/Videos';
 import Artigos from '../screens/Artigos';
 import Loja from '../screens/Loja';
+import PapeisDeParede from '../screens/PapeisDeParede';
+import Icones from '../screens/Icones';
+import Molduras from '../screens/Molduras';
+import Assinar from '../screens/Assinar';
 
 const Stack = createStackNavigator<MainStackParamList, "MainStack">();
 
@@ -29,6 +33,10 @@ export default function AppNavigator() {
       <Stack.Screen name="Artigos" component={Artigos} />
       <Stack.Screen name="Perfil" component={Perfil} />
       <Stack.Screen name="Loja" component={Loja} />
+      <Stack.Screen name="PapeisDeParede" component={PapeisDeParede} />
+      <Stack.Screen name="Icones" component={Icones} />
+      <Stack.Screen name="Molduras" component={Molduras} />
+      <Stack.Screen name="Assinar" component={Assinar} />
     </Stack.Navigator>
   );
 }

@@ -5,10 +5,14 @@ export type MainStackParamList = {
   Home: undefined;
   Perfil: undefined;
   Banca: undefined;
-  Loja: undefined;
   Questoes: undefined;
   Audios: undefined;
   Videos: undefined;
   Artigos: undefined;
+  Loja: undefined;
+  PapeisDeParede: undefined;
+  Icones: undefined;
+  Molduras: undefined;
+  Assinar: undefined;
   App: undefined;
 };

@@ -14,10 +14,10 @@ export default function Loja() {
     const navigation = useTypedNavigation();
 
     const handleNavigate = (type: string) => {
-        if (type === 'video') navigation.navigate("Loja");
-        if (type === 'audio') navigation.navigate("Loja");
-        if (type === 'artigo') navigation.navigate("Loja");
-        if (type === 'questao') navigation.navigate("Loja");
+        if (type === 'moldura') navigation.navigate("Molduras");
+        if (type === 'papel') navigation.navigate("PapeisDeParede");
+        if (type === 'icone') navigation.navigate("Icones");
+        if (type === 'assinar') navigation.navigate("Assinar");
     };
 
     return (
@@ -30,12 +30,10 @@ export default function Loja() {
                 {/* Ícones de navegação */}
                 <View style={{ flexDirection: 'row', gap: 10 }}>
                     {[
-                        { icon: <Circle size={60} />, type: 'video', label: 'Moldura' },
-                        {
-                            icon: <Sticker size={60} weight='fill' />, type: ' audio', label: 'Papéis de parede'
-                        },
-                        { icon: <User size={60} weight='fill' />, type: 'artigo', label: 'Ícones' },
-                        { icon: <Stamp size={60} weight='fill' />, type: 'questao', label: 'Assinar' },
+                        { icon: <Circle size={60} />, type: 'moldura', label: 'Moldura' },
+                        { icon: <Sticker size={60} weight='fill' />, type: ' papel', label: 'Papéis de parede' },
+                        { icon: <User size={60} weight='fill' />, type: 'icone', label: 'Ícones' },
+                        { icon: <Stamp size={60} weight='fill' />, type: 'assinar', label: 'Assinar' },
                     ].map(({ icon, type, label }) => (
                         <TouchableOpacity key={type} onPress={() => handleNavigate(type)} style={{ flex: 1, alignItems: 'center' }}>
                             <View style={{ backgroundColor: theme.colors.textLight, padding: 8, borderRadius: 10 }}>
