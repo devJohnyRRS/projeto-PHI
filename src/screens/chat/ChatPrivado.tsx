@@ -4,6 +4,7 @@ import theme from "../../assets/themes/THEMES";
 import PerfilHeader from "../../components/PerfilHeader";
 import { SlidersHorizontal } from "phosphor-react-native";
 import ConversasPrivadas from '../../components/ConversasPrivadas/index';
+import TextInputBox from "../../components/TextInputBox";
 
 export default function ChatPrivado(){
 return (
@@ -11,10 +12,11 @@ return (
 
         <PerfilHeader />
         <View style={{ margin: 24, gap: 0 }}>
-        <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold' }}>
+        <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold',  }}>
                         Mensagens
                     </Text>
         <ConversasPrivadas />
+        <TextInputBox />
         </View>
     </ScrollView>
 )

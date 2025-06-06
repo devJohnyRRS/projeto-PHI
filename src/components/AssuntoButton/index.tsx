@@ -9,13 +9,13 @@ import { useTypedNavigation } from '../../hooks/useNavigate'
 export default function AssuntoButton({ style }: any) {
     const navigation = useTypedNavigation();
 
-const handleNavigationChat = () => {
-        navigation.navigate("Chat");
+const handleNavigation = () => {
+        //navigation.navigate();
     };
 
     return (
         <CustomButton
-            onPress={() => handleNavigationChat()
+            onPress={() => handleNavigation()
                 //console.log('ver mais')
                 }
             style={{

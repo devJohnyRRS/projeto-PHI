@@ -16,7 +16,6 @@ return (
                     </Text>
         <Conversas />
         </View>
-
     </ScrollView>
 )
 }
