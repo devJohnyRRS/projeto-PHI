@@ -6,15 +6,15 @@ import { Text } from 'react-native'
 import { useTypedNavigation } from '../../hooks/useNavigate'
 
 export default function AssuntoButton({ style }: any) {
-    const navigation = useTypedNavigation();
+    // const navigation = useTypedNavigation();
 
-    const handleNavigate = () => {
-        navigation.navigate("Banca");
-    };
+    // const handleNavigate = () => {
+
+    // };
 
     return (
         <CustomButton
-            onPress={handleNavigate}
+            onPress={() => { }}
             style={{
                 ...style,
                 backgroundColor: theme.colors.primary,

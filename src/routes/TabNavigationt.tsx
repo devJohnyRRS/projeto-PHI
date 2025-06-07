@@ -1,25 +1,17 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RoutesList } from "../types/TabNavigationList";
-import Home from "../screens/home";
-import Artigos from "../screens/Artigos";
-import Audios from "../screens/Audios";
+import Home from '../screens/Home';
 import Banca from "../screens/Banca";
 import Perfil from "../screens/Perfil";
-import Questoes from "../screens/Questoes";
-import Videos from "../screens/Videos";
 import {
-  BookOpen,
-  Calendar,
   CalendarBlank,
   House,
-  MusicNote,
-  Newspaper,
+  Storefront,
   User,
-  Users,
-  VideoCamera,
 } from "phosphor-react-native";
 import theme from "../assets/themes/THEMES";
+import Loja from '../screens/Loja';
 
 const Tab = createBottomTabNavigator<RoutesList, "TabNavigation">();
 
@@ -65,6 +57,14 @@ export default function AppTabs() {
                     weight={focused ? "fill" : "regular"}
                   />
                 );
+              case "Loja":
+                return (
+                  <Storefront
+                    color={color}
+                    size={24}
+                    weight={focused ? "fill" : "regular"}
+                  />
+                );
               // Adicione as outras telas aqui, exemplo:
               // case "Questoes":
               //   return (
@@ -84,6 +84,7 @@ export default function AppTabs() {
         <Tab.Screen name="Banca" component={Banca} />
         {/* Outras telas aqui, exemplo: */}
         {/* <Tab.Screen name="Chat" component={Chat} /> */}
+        <Tab.Screen name="Loja" component={Loja} />
         <Tab.Screen name="Perfil" component={Perfil} />
       </Tab.Navigator>
     </>

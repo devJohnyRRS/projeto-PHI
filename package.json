@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.3.1",
-    "@react-native-community/slider": "^4.5.7",
+    "@react-native-community/slider": "^4.5.6",
     "@react-native-masked-view/masked-view": "0.3.2",
     "@react-native-picker/picker": "^2.11.0",
     "@react-navigation/bottom-tabs": "^7.3.13",
@@ -29,7 +29,7 @@
     "react-native-gesture-handler": "~2.24.0",
     "react-native-paper": "^5.14.5",
     "react-native-safe-area-context": "5.4.0",
-    "react-native-screens": "~4.10.0",
+    "react-native-screens": "~4.11.1",
     "react-native-svg": "15.11.2",
     "react-native-web": "^0.20.0",
     "react-native-webview": "13.13.5"

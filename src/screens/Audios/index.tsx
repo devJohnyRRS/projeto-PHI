@@ -2,49 +2,14 @@ import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Audio } from 'expo-av';
 import PostCard from '../../components/PostCard';
-import { MediaPost } from '../../types/Posts';
 import PerfilHeader from '../../components/PerfilHeader';
 import { CaretLeft, Pause, Play, SkipBack, SkipForward, SlidersHorizontal, SpeakerSimpleHigh } from 'phosphor-react-native';
 import Slider from '@react-native-community/slider';
 import theme from '../../assets/themes/THEMES';
 import { useTypedNavigation } from '../../hooks/useNavigate';
+import { mockPostsAudios } from '../../Mocks/mockPostsAudios';
 
 const imagem = require('../../../assets/vinao.jpg');
-const audio1 = require('../../../assets/audios/audio-1.mp3');
-const audio2 = require('../../../assets/audios/audio-2.mp3');
-
-const mockPosts: (MediaPost & { file: any })[] = [
-    {
-        id: 1,
-        type: 'audio',
-        title: 'Jockey di gue?',
-        link: '',
-        file: audio1,
-        stats: {
-            badge: ['Jockey', 'de', 'Galinha'],
-            time: '30min atrás',
-            content: 'Aprenda sobre bancos de dados relacionais e não relacionais.',
-            comments: 589,
-            likes: 5000,
-            dislikes: 1,
-        },
-    },
-    {
-        id: 2,
-        type: 'audio',
-        title: 'O que foi o Holocausto?',
-        link: '',
-        file: audio2,
-        stats: {
-            badge: ['Análise e desenvolvimento'],
-            time: '1h atrás',
-            content: 'Entenda um dos períodos mais sombrios da história moderna.',
-            comments: 421,
-            likes: 4200,
-            dislikes: 3,
-        },
-    },
-];
 
 export default function Audios() {
     const [players, setPlayers] = useState<{ sound: Audio.Sound | null; isPlaying: boolean; position: number; duration: number }[]>([]);
@@ -83,7 +48,7 @@ export default function Audios() {
 
         // Inicializar se ainda não tiver player
         if (!updated[index]) {
-            const { sound } = await Audio.Sound.createAsync(mockPosts[index].file);
+            const { sound } = await Audio.Sound.createAsync(mockPostsAudios[index].file);
             sound.setOnPlaybackStatusUpdate(status => updateStatus(index, status));
 
             // Pausa os outros
@@ -149,13 +114,13 @@ export default function Audios() {
         <ScrollView style={{ flex: 1, backgroundColor: theme.colors.background }}>
             <PerfilHeader />
 
-            <View style={{ gap: 10, marginBottom: 50 }}>
+            <View style={{ gap: 10, marginBottom: 15, marginHorizontal: 15, marginTop: 15, borderRadius: 5 }}>
 
                 <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between', backgroundColor: theme.colors.textLight, padding: 10 }}>
 
                     <View style={{ flexDirection: 'row', gap: 5 }}>
                         <TouchableOpacity onPress={handleGoBack} style={{ width: 24 }}>
-                            <CaretLeft color={theme.colors.text} size={24} />
+                            <CaretLeft color={theme.colors.text} size={24} weight='bold' />
                         </TouchableOpacity>
                         <SpeakerSimpleHigh weight='fill' color={theme.colors.primary} />
                         <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold' }}>
@@ -172,7 +137,7 @@ export default function Audios() {
                     </TouchableOpacity>
 
                 </View>
-                {mockPosts.map((post, index) => {
+                {mockPostsAudios.map((post, index) => {
                     const player = players[index] || {
                         position: 0,
                         duration: 1,

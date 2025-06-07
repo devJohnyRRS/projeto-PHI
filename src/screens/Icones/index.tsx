@@ -1,13 +1,13 @@
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { Linking, ScrollView, Text, TouchableOpacity, View } from 'react-native'
-import PerfilHeader from '../../components/PerfilHeader'
+import { CaretLeft, SlidersHorizontal, User } from 'phosphor-react-native'
 import theme from '../../assets/themes/THEMES'
-import { CaretLeft, Newspaper, SlidersHorizontal } from 'phosphor-react-native'
+import LojaCard from '../../components/LojaCard'
+import PerfilHeader from '../../components/PerfilHeader'
 import { useTypedNavigation } from '../../hooks/useNavigate'
-import PostCard from '../../components/PostCard'
-import { mockPostsArtigos } from '../../Mocks/mockPostsArtigos'
+import { mockIconesLoja } from '../../Mocks/mockIconesLoja'
 
-export default function Artigos() {
+export default function Icones() {
 
     const navigation = useTypedNavigation();
 
@@ -27,9 +27,9 @@ export default function Artigos() {
                         <TouchableOpacity onPress={handleGoBack} style={{ width: 24 }}>
                             <CaretLeft color={theme.colors.text} size={24} weight='bold' />
                         </TouchableOpacity>
-                        <Newspaper weight='fill' color={theme.colors.primary} />
+                        <User weight='fill' color={theme.colors.primary} />
                         <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold' }}>
-                            Artigos
+                            Ícones
                         </Text>
                     </View>
 
@@ -43,20 +43,11 @@ export default function Artigos() {
 
                 </View>
 
-                {mockPostsArtigos.map((artigo) => (
-                    <PostCard key={artigo.id} post={artigo}>
-                        <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 4 }}>{artigo.title}</Text>
-
-                        <View>
-                            <Text numberOfLines={6} style={{ fontSize: 14, color: theme.colors.text }}>
-                                {artigo.description}
-                            </Text>
-
-                            <TouchableOpacity onPress={() => Linking.openURL(artigo.link)}>
-                                <Text style={{ color: theme.colors.secondary, marginTop: 4 }}>Ver mais...</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </PostCard>
+                {mockIconesLoja.map((artigo) => (
+                    <LojaCard
+                        item={artigo}
+                        key={artigo.id}
+                    />
                 ))}
             </View>
         </ScrollView >

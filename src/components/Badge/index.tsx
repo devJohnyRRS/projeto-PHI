@@ -3,12 +3,14 @@ import theme from "../../assets/themes/THEMES";
 
 interface BadgeProps {
     text: string;
+    style?: object;
 }
 
-function Badge({ text }: BadgeProps) {
+function Badge({ text, style }: BadgeProps) {
     return (
         <View
             style={{
+                ...style,
                 width: 60,
                 backgroundColor: theme.colors.lightGray,
                 borderRadius: 5,

@@ -1,14 +1,13 @@
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
-import PostCard from '../../components/PostCard'
-import PerfilHeader from '../../components/PerfilHeader';
-import YouTubeEmbed from '../../components/YotubeEmbed';
-import { CaretLeft, SlidersHorizontal, Video } from 'phosphor-react-native';
+import { CaretLeft, SlidersHorizontal, Sticker } from 'phosphor-react-native';
 import theme from '../../assets/themes/THEMES';
+import LojaCard from '../../components/LojaCard';
+import PerfilHeader from '../../components/PerfilHeader';
 import { useTypedNavigation } from '../../hooks/useNavigate';
-import { mockPostsVideos } from '../../Mocks/mockPostsVideo';
+import { mockPapeisLoja } from '../../Mocks/mockPapeisLoja';
 
-export default function Videos() {
+export default function PapeisDeParede() {
 
     const navigation = useTypedNavigation();
 
@@ -18,19 +17,19 @@ export default function Videos() {
 
     return (
         <ScrollView style={{ flex: 1, backgroundColor: theme.colors.background }}>
+
             <PerfilHeader />
 
             <View style={{ gap: 10, margin: 15, borderRadius: 5 }}>
-
                 <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between', backgroundColor: theme.colors.textLight, padding: 10 }}>
 
                     <View style={{ flexDirection: 'row', gap: 5 }}>
-                        <TouchableOpacity style={{ width: 24 }} onPress={handleGoBack}>
-                            <CaretLeft color={theme.colors.gray} weight='bold' />
+                        <TouchableOpacity onPress={handleGoBack} style={{ width: 24 }}>
+                            <CaretLeft color={theme.colors.text} size={24} weight='bold' />
                         </TouchableOpacity>
-                        <Video weight='fill' color={theme.colors.primary} />
+                        <Sticker weight='fill' color={theme.colors.primary} />
                         <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold' }}>
-                            Vídeos
+                            Pápeis de Parede
                         </Text>
                     </View>
 
@@ -44,14 +43,13 @@ export default function Videos() {
 
                 </View>
 
-                {mockPostsVideos.map((post) => (
-                    <PostCard key={post.id} post={post}>
-                        {/* <Text style={{ fontSize: 16 }}>{post.stats.content}</Text> */}
-                        <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{post.title}</Text>
-                        <YouTubeEmbed videoId={post.link} />
-                    </PostCard>
+                {mockPapeisLoja.map((artigo) => (
+                    <LojaCard
+                        item={artigo}
+                        key={artigo.id}
+                    />
                 ))}
             </View>
-        </ScrollView>
+        </ScrollView >
     )
 }
