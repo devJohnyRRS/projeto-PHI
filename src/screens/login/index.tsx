@@ -5,7 +5,7 @@ import theme from "../../assets/themes/THEMES";
 import CustomButton from "../../components/customButton/CustomButton";
 import { styles } from "./styles";
 import CustomImput from "../../components/customInput/CustomInput";
-import { CheckSquare, Eye, EyeSlash, Square } from "phosphor-react-native";
+import { CheckSquare, Square } from "phosphor-react-native";
 import { useTypedNavigation } from "../../hooks/useNavigate";
 
 const favIcon = require("../../../assets/favicon.png");
@@ -88,22 +88,10 @@ export default function Login() {
               secureTextEntry={!showPassword}
               error={erroSenha}
               errorMessage="Preencha a senha"
+              showPasswordToggle
+              showPassword={showPassword}
+              onTogglePassword={() => setShowPassword((v) => !v)}
             />
-            {showPassword ? (
-              <TouchableOpacity
-                style={styles.eye}
-                onPress={() => setShowPassword(!showPassword)}
-              >
-                <Eye size={20} color={theme.colors.text} />
-              </TouchableOpacity>
-            ) : (
-              <TouchableOpacity
-                style={styles.eye}
-                onPress={() => setShowPassword(!showPassword)}
-              >
-                <EyeSlash size={20} color={theme.colors.text} />
-              </TouchableOpacity>
-            )}
           </View>
           <View
             style={{

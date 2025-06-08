@@ -10,58 +10,61 @@ import CustomImput from '../customInput/CustomInput';
 import styles from './styles';
 
 export default function PerfilHeader() {
-    const icon = require("../../../assets/favicon.png");
-    const profile = require("../../../assets/gustavo.png");
+  const icon = require("../../../assets/favicon.png");
+  const profile = require("../../../assets/gustavo.png");
 
-    const navigation = useTypedNavigation();
-    const [drawerVisible, setDrawerVisible] = useState(false);
+  const navigation = useTypedNavigation();
+  const [drawerVisible, setDrawerVisible] = useState(false);
 
-    const { hasNewNotifications } = useNotifications();
+  const { hasNewNotifications } = useNotifications();
 
-    const toggleDrawer = () => setDrawerVisible(prev => !prev);
+  const toggleDrawer = () => setDrawerVisible((prev) => !prev);
 
-    const handleNavigate = () => {
-        navigation.navigate("Perfil");
-    };
+  const handleNavigate = () => {
+    navigation.navigate("Perfil");
+  };
 
-    return (
-        <>
-            <View style={styles.container}>
-                <Image source={icon} style={styles.icon} />
+  return (
+    <>
+      <View style={styles.container}>
+        <Image source={icon} style={styles.icon} />
 
-                <View style={styles.profileRow}>
-                    <FotoPerfil
-                        name='Gustavo Souza'
-                        username='@GustavoSouza1304'
-                        image={profile}
-                        type='light'
-                        onPress={handleNavigate}
-                    />
-                    <TouchableOpacity onPress={toggleDrawer}>
-                        {hasNewNotifications ? (
-                            <BellSimpleRinging color={theme.colors.textLight} weight='fill' />
-                        ) : (
-                            <BellSimple color={theme.colors.textLight} weight='fill' />
-                        )}
-                    </TouchableOpacity>
-                </View>
+        <View style={styles.profileRow}>
+          <FotoPerfil
+            name='Gustavo Souza'
+            username='@GustavoSouza1304'
+            image={profile}
+            type='light'
+            onPress={handleNavigate}
+          />
+          <TouchableOpacity onPress={toggleDrawer}>
+            {hasNewNotifications ? (
+              <BellSimpleRinging color={theme.colors.textLight} weight='fill' />
+            ) : (
+              <BellSimple color={theme.colors.textLight} weight='fill' />
+            )}
+          </TouchableOpacity>
+        </View>
 
-                <View style={styles.searchContainer}>
-                    <CustomImput
-                        placeholder="Pesquisar"
-                        placeholderTextColor={theme.colors.gray}
-                        keyboardType="default"
-                        errorMessage="Preencha o campo"
-                    />
-                    <MagnifyingGlass
-                        color={theme.colors.lightGray}
-                        size={24}
-                        style={styles.searchIcon}
-                    />
-                </View>
-            </View>
+        <View style={styles.searchContainer}>
+          <CustomImput
+            placeholder="Pesquisar"
+            placeholderTextColor={theme.colors.gray}
+            keyboardType="default"
+            errorMessage="Preencha o campo"
+          />
+          <MagnifyingGlass
+            color={theme.colors.lightGray}
+            size={24}
+            style={styles.searchIcon}
+          />
+        </View>
+      </View>
 
-            <DrawerNotificacao visible={drawerVisible} onClose={() => setDrawerVisible(false)} />
-        </>
-    );
+      <DrawerNotificacao
+        visible={drawerVisible}
+        onClose={() => setDrawerVisible(false)}
+      />
+    </>
+  );
 }
