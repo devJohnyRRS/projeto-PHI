@@ -1,11 +1,11 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RoutesList } from "../types/TabNavigationList";
-import Home from '../screens/Home';
 import Banca from "../screens/Banca";
 import Perfil from "../screens/Perfil";
 import {
   CalendarBlank,
+  Chat,
   ChatCircleText,
   House,
   Storefront,
@@ -13,7 +13,8 @@ import {
 } from "phosphor-react-native";
 import theme from "../assets/themes/THEMES";
 import Loja from '../screens/Loja';
-import Chat from '../screens/chat/Chat';
+import ChatScreen from '../screens/chat/Chat';
+import Home from "../screens/home";
 
 const Tab = createBottomTabNavigator<RoutesList, "TabNavigation">();
 
@@ -85,7 +86,7 @@ export default function AppTabs() {
         {/* Outras telas aqui, exemplo: */}
         {/* <Tab.Screen name="Chat" component={Chat} /> */}
         <Tab.Screen name="Loja" component={Loja} />
-        <Tab.Screen name="Chat" component={Chat} />
+        <Tab.Screen name="Chat" component={ChatScreen} />
         <Tab.Screen name="Perfil" component={Perfil} />
       </Tab.Navigator>
     </>

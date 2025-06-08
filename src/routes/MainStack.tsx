@@ -15,6 +15,7 @@ import Molduras from '../screens/Molduras';
 import Assinar from '../screens/Assinar';
 import Chat from "../screens/chat/Chat";
 import ChatPrivado from "../screens/chat/ChatPrivado";
+import DetalheQuestao from "../screens/Questoes/DetalheQuestao";
 
 
 const Stack = createStackNavigator<MainStackParamList, "MainStack">();
@@ -29,6 +30,7 @@ export default function AppNavigator() {
       <Stack.Screen name="ChatPrivado" component={ChatPrivado} />
       <Stack.Screen name="Home" component={AppTabs} />
       <Stack.Screen name="Questoes" component={Questoes} />
+      <Stack.Screen name="DetalheQuestao" component={DetalheQuestao} />
       <Stack.Screen name="Audios" component={Audios} />
       <Stack.Screen name="Videos" component={Videos} />
       <Stack.Screen name="Artigos" component={Artigos} />
