@@ -26,4 +26,5 @@ export type MainStackParamList = {
   Assinar: undefined;
   App: undefined;
   ChatPrivado: undefined;
+  Chat: undefined;
 };
