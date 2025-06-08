@@ -1,5 +1,5 @@
-import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, Image, ScrollView, TouchableOpacity, Modal } from 'react-native'
+import React, { useState } from 'react'
 import theme from '../../assets/themes/THEMES'
 import { Gear, CaretLeft, Star, PencilSimple, SlidersHorizontal, X } from 'phosphor-react-native';
 import CustomButton from '../../components/customButton/CustomButton';
@@ -8,10 +8,8 @@ import AssuntoButton from '../../components/AssuntoButton';
 import PostCard from '../../components/PostCard';
 import { useTypedNavigation } from '../../hooks/useNavigate';
 import { mockUserInformation } from '../../Mocks/mockUserInformation';
-import { Modal } from 'react-native';
-import { useState } from 'react';
 import { Trophy } from '../../types/Trophy';
-
+import { styles } from './styles';
 
 export default function Perfil() {
     const navigation = useTypedNavigation();
@@ -27,153 +25,130 @@ export default function Perfil() {
     }
 
     return (
-        <ScrollView style={{ flex: 1, backgroundColor: theme.colors.background }} showsVerticalScrollIndicator={false}>
-            <View style={{
-                width: '100%',
-                height: 180,
-                backgroundColor: theme.colors.secondary,
-                borderBottomEndRadius: 25,
-                borderBottomStartRadius: 25,
-                padding: 24,
-                alignItems: 'center',
-                gap: 10,
-            }}>
-
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginTop: 30 }}>
-                    <TouchableOpacity onPress={handleGoBack} style={{ padding: 5 }}>
+        <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+            <View style={styles.headerContainer}>
+                <View style={styles.headerTop}>
+                    <TouchableOpacity onPress={handleGoBack} style={styles.iconButton}>
                         <CaretLeft color={theme.colors.textLight} weight='bold' />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setConfigVisible(true)} style={{ padding: 5 }}>
+                    <TouchableOpacity onPress={() => setConfigVisible(true)} style={styles.iconButton}>
                         <Gear color={theme.colors.textLight} weight='fill' />
                     </TouchableOpacity>
                 </View>
 
-                <View style={{
-                    width: 120,
-                    height: 120,
-                    borderRadius: 60,
-                    overflow: 'hidden',
-                    position: 'absolute',
-                    bottom: -60,
-                    left: 30,
-                }}>
-                    <Image source={profile} style={{ width: '100%', height: '100%', resizeMode: 'cover' }} />
+                <View style={styles.profileImageContainer}>
+                    <Image source={profile} style={styles.profileImage} />
                 </View>
 
-                <View style={{ position: 'absolute', left: 110, bottom: -60, flexDirection: 'row', alignItems: 'center' }}>
-
-                    <View style={{ width: 40, height: 40, borderRadius: 40, padding: 5, borderColor: theme.colors.primary, borderWidth: 2, backgroundColor: theme.colors.background, justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ textAlign: 'center' }}>{mockUserInformation.level}</Text>
+                <View style={styles.levelContainer}>
+                    <View style={styles.levelCircle}>
+                        <Text style={styles.levelText}>{mockUserInformation.level}</Text>
                     </View>
-
                     <Text>.lvl</Text>
                 </View>
+            </View>
 
-            </View >
-            <View style={{ marginHorizontal: 24, marginTop: 10, gap: 10, position: 'relative' }}>
-
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, alignSelf: 'flex-end' }}>
-                    <Image source={flag} style={{ width: 30, height: 20 }} />
+            <View style={styles.content}>
+                <View style={styles.flagContainer}>
+                    <Image source={flag} style={styles.flagImage} />
                     <Text>{mockUserInformation.title}</Text>
                 </View>
 
-                <View style={{ marginTop: 30, gap: 10 }}>
-
-                    <View style={{ gap: 5 }}>
-                        <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{mockUserInformation.name}</Text>
+                <View style={styles.userInfo}>
+                    <View style={styles.userName}>
+                        <Text style={styles.userNameText}>{mockUserInformation.name}</Text>
                         <Text>{mockUserInformation.username}</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row', gap: 5, alignItems: 'center' }}>
+                    <View style={styles.rating}>
                         <Star weight='fill' color='#ffde59' />
-                        <Text style={{ fontSize: 13, color: theme.colors.gray }}>{`${mockUserInformation.rating} (${mockUserInformation.questions} questões resolvidas)`}</Text>
+                        <Text style={styles.ratingText}>{`${mockUserInformation.rating} (${mockUserInformation.questions} questões resolvidas)`}</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row', gap: 10, justifyContent: 'space-between', alignItems: 'center' }}>
-                        <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
-
-                            <View style={{ alignItems: 'center' }}>
-                                <Text style={{ fontWeight: 'bold', fontSize: 16 }}>Seguindo</Text>
+                    <View style={styles.followContainer}>
+                        <View style={styles.followGroup}>
+                            <View style={styles.followItem}>
+                                <Text style={styles.followTitle}>Seguindo</Text>
                                 <Text>{mockUserInformation.following}</Text>
                             </View>
 
-                            <View style={{ alignItems: 'center' }}>
-                                <Text style={{ fontWeight: 'bold', fontSize: 16 }}>Seguidores</Text>
+                            <View style={styles.followItem}>
+                                <Text style={styles.followTitle}>Seguidores</Text>
                                 <Text>{mockUserInformation.followers}</Text>
                             </View>
-
                         </View>
-                        <CustomButton onPress={() => console.log('ver mais')} style={{ backgroundColor: theme.colors.primary, borderRadius: 25, width: 50 }}>
+                        <CustomButton onPress={() => console.log('ver mais')} style={styles.editButton}>
                             <PencilSimple color={theme.colors.textLight} size={20} weight='fill' />
                         </CustomButton>
                     </View>
                 </View>
             </View>
 
-            <View style={{ backgroundColor: theme.colors.bronze, width: '100%', height: 50, marginTop: 20, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontWeight: 'bold', fontSize: 16, color: theme.colors.textLight }} >#Eu amo {mockUserInformation.tag}</Text>
+            <View style={styles.tagContainer}>
+                <Text style={styles.tagText}>#Eu amo {mockUserInformation.tag}</Text>
             </View>
 
-            <View style={{ borderBottomWidth: 3, borderColor: theme.colors.lightGray }}>
-                <View style={{ marginVertical: 10, marginHorizontal: 24, gap: 10 }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 16 }}>Bio</Text>
+            <View style={styles.section}>
+                <View style={styles.sectionContent}>
+                    <Text style={styles.sectionTitle}>Bio</Text>
                     {mockUserInformation.bio ? (
-                        <Text style={{ fontSize: 13, color: theme.colors.text }}>{mockUserInformation.bio}.</Text>
+                        <Text style={styles.sectionText}>{mockUserInformation.bio}.</Text>
                     ) : (
-                        <Text style={{ fontSize: 13, color: theme.colors.gray }}>Nada por aqui...</Text>
-                    )
-                    }
-                </View>
-            </View>
-            <View style={{ borderBottomWidth: 3, borderColor: theme.colors.lightGray }}>
-                <View style={{ marginVertical: 10, marginHorizontal: 24, gap: 10, flexDirection: 'row', alignItems: 'flex-start' }}>
-                    {mockUserInformation.trophies.length > 0 ? (
-                        mockUserInformation.trophies?.map((trophie) => (
-                            <TouchableOpacity
-                                key={trophie.id}
-                                style={{ width: 90, alignItems: 'center', justifyContent: 'center' }}
-                                onPress={() => setSelectedTrophy(trophie)}
-                            >
-                                <Image source={trophie.icon} style={{ width: 50, height: 50 }} />
-                                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#b3bcc2', textAlign: 'center' }}>{trophie.name}</Text>
-                            </TouchableOpacity>
-                        ))
-                    ) : (
-                        <Text style={{ fontSize: 13, color: theme.colors.gray }}>Nada por aqui...</Text>
+                        <Text style={styles.emptyText}>Nada por aqui...</Text>
                     )}
                 </View>
             </View>
-            <View style={{ borderBottomWidth: 3, borderColor: theme.colors.lightGray }}>
-                <View style={{ marginVertical: 10, marginHorizontal: 24, gap: 10 }}>
-                    <View style={{ flexDirection: 'row', gap: 5 }}>
+
+            <View style={styles.section}>
+                <View style={[styles.sectionContent, styles.trophiesContainer]}>
+                    {mockUserInformation.trophies.length > 0 ? (
+                        mockUserInformation.trophies.map((trophie) => (
+                            <TouchableOpacity
+                                key={trophie.id}
+                                style={styles.trophyItem}
+                                onPress={() => setSelectedTrophy(trophie)}
+                            >
+                                <Image source={trophie.icon} style={styles.trophyIcon} />
+                                <Text style={styles.trophyName}>{trophie.name}</Text>
+                            </TouchableOpacity>
+                        ))
+                    ) : (
+                        <Text style={styles.emptyText}>Nada por aqui...</Text>
+                    )}
+                </View>
+            </View>
+
+            <View style={styles.section}>
+                <View style={styles.sectionContent}>
+                    <View style={styles.commentsHeader}>
                         <SlidersHorizontal />
-                        <Text style={{ fontWeight: 'bold', fontSize: 16 }}>Comentários</Text>
+                        <Text style={styles.sectionTitle}>Comentários</Text>
                     </View>
-                    <Text style={{ fontSize: 13, color: theme.colors.gray }}>{mockUserInformation.comments || "Nada por aqui..."}</Text>
+                    <Text style={styles.emptyText}>{mockUserInformation.comments || "Nada por aqui..."}</Text>
                     {mockUserInformation.comments > 0 && (
-                        <TouchableOpacity style={{ width: 30, height: 20 }}>
-                            <Text style={{ fontSize: 13, color: theme.colors.text, fontWeight: 'bold' }}>Ver</Text>
+                        <TouchableOpacity style={styles.viewButton}>
+                            <Text style={styles.viewButtonText}>Ver</Text>
                         </TouchableOpacity>
                     )}
                 </View>
             </View>
 
-            <View style={{ gap: 10, margin: 15, borderRadius: 5 }}>
-                <View style={{ flexDirection: 'row', gap: 5 }}>
+            <View style={styles.mySubjects}>
+                <View style={styles.subjectsHeader}>
                     <SlidersHorizontal />
-                    <Text style={{ fontWeight: 'bold', fontSize: 16 }}>Meus assuntos</Text>
+                    <Text style={styles.sectionTitle}>Meus assuntos</Text>
                 </View>
 
-                <View style={{ gap: 10 }}>
+                <View style={styles.subjectsContent}>
                     {mockUserInformation.subjects.length === 0 && (
-                        <Text style={{ fontSize: 13, color: theme.colors.gray }}>Parece que você não tem nenhum assunto no seu perfil :(</Text>
+                        <Text style={styles.emptyText}>Parece que você não tem nenhum assunto no seu perfil :(</Text>
                     )}
 
-                    <AssuntoButton style={{ marginBottom: 5 }} />
+                    <AssuntoButton style={styles.assuntoButton} />
 
                     {mockUserInformation.subjects.map((post) => (
                         <PostCard key={post.id} post={post}>
-                            <Text style={{ fontSize: 16 }}>{post.stats.content}</Text>
+                            <Text style={styles.postContent}>{post.stats.content}</Text>
                         </PostCard>
                     ))}
                 </View>
@@ -185,42 +160,21 @@ export default function Perfil() {
                 animationType="fade"
                 onRequestClose={() => setSelectedTrophy(null)}
             >
-                <View style={{
-                    flex: 1,
-                    backgroundColor: 'rgba(0,0,0,0.4)',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: 20,
-                }}>
-                    <View style={{
-                        backgroundColor: theme.colors.background,
-                        borderRadius: 10,
-                        padding: 20,
-                        gap: 10,
-                        width: '100%',
-                    }}>
-                        <View style={{
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                        }}>
-                            <Text style={{ fontSize: 16, fontWeight: 'bold', color: theme.colors.text }}>
-                                {selectedTrophy?.name}
-                            </Text>
-                            <TouchableOpacity onPress={() => setSelectedTrophy(null)} style={{ padding: 5 }}>
+                <View style={styles.modalOverlay}>
+                    <View style={styles.modalContent}>
+                        <View style={styles.modalHeader}>
+                            <Text style={styles.modalTitle}>{selectedTrophy?.name}</Text>
+                            <TouchableOpacity onPress={() => setSelectedTrophy(null)} style={styles.iconButton}>
                                 <X size={20} color={theme.colors.gray} />
                             </TouchableOpacity>
                         </View>
 
-                        <Text style={{ fontSize: 14, color: theme.colors.gray }}>
-                            {selectedTrophy?.description}
-                        </Text>
+                        <Text style={styles.modalDescription}>{selectedTrophy?.description}</Text>
                     </View>
                 </View>
             </Modal>
 
             <DrawerConfiguracoes visible={isConfigVisible} onClose={() => setConfigVisible(false)} />
-
-        </ScrollView >
+        </ScrollView>
     )
 }

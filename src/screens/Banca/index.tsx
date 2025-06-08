@@ -8,14 +8,13 @@ import { useTypedNavigation } from '../../hooks/useNavigate';
 import PostCard from '../../components/PostCard';
 import { MediaPost } from '../../types/Posts';
 import YouTubeEmbed from '../../components/YotubeEmbed';
-import Slider from '@react-native-community/slider'; // Certifique-se de ter este componente
+import Slider from '@react-native-community/slider';
 import { Play, SkipBack, SkipForward } from 'phosphor-react-native';
 import { mockPopularesBanca } from '../../Mocks/mockPopularesBanca';
+import { styles } from './styles';
 
 export default function Banca() {
     const navigation = useTypedNavigation();
-
-    const imagem = require('../../../assets/vinao.jpg');
 
     const handleNavigate = (type: string) => {
         if (type === 'video') navigation.navigate("Videos");
@@ -24,35 +23,34 @@ export default function Banca() {
         if (type === 'questao') navigation.navigate("Questoes");
     };
 
-    const renderPostContent = (post: MediaPost, index: number) => {
+    const renderPostContent = (post: MediaPost) => {
         switch (post.type) {
             case 'video':
                 return (
                     <>
-                        <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{post.title}</Text>
+                        <Text style={styles.postTitle}>{post.title}</Text>
                         <YouTubeEmbed videoId={post.link ?? ''} />
                     </>
                 );
             case 'artigo':
                 return (
                     <>
-                        <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 4 }}>{post.title}</Text>
-                        <Text numberOfLines={6} style={{ fontSize: 14, color: theme.colors.text }}>{post.description}</Text>
+                        <Text style={styles.postTitle}>{post.title}</Text>
+                        <Text numberOfLines={6} style={styles.postDescription}>{post.description}</Text>
                         <TouchableOpacity onPress={() => Linking.openURL(post.link ?? '')}>
-                            <Text style={{ color: theme.colors.secondary, marginTop: 4 }}>Ver mais...</Text>
+                            <Text style={styles.linkText}>Ver mais...</Text>
                         </TouchableOpacity>
                     </>
                 );
             case 'audio':
                 return (
                     <>
-                        <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 10 }}>{post.title}</Text>
-                        <View style={{ gap: 10, alignItems: 'center' }}>
-                            <Image source={post.image} style={{ width: '100%', height: 200, borderRadius: 5 }} />
-                            {/* Apenas mock, substitua com player real se necessário */}
-                            <View style={{ width: '100%', paddingHorizontal: 20 }}>
+                        <Text style={[styles.postTitle, { marginBottom: 10 }]}>{post.title}</Text>
+                        <View style={styles.audioContainer}>
+                            <Image source={post.image} style={styles.postImage} />
+                            <View style={styles.sliderWrapper}>
                                 <Slider
-                                    style={{ width: '100%', height: 40 }}
+                                    style={styles.slider}
                                     minimumValue={0}
                                     maximumValue={100}
                                     value={50}
@@ -60,12 +58,12 @@ export default function Banca() {
                                     maximumTrackTintColor={theme.colors.primary}
                                     thumbTintColor={theme.colors.text}
                                 />
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={styles.timeWrapper}>
                                     <Text>00:00</Text>
                                     <Text>03:00</Text>
                                 </View>
                             </View>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: 200 }}>
+                            <View style={styles.controls}>
                                 <TouchableOpacity><SkipBack weight="fill" size={32} /></TouchableOpacity>
                                 <TouchableOpacity><Play weight="fill" size={32} /></TouchableOpacity>
                                 <TouchableOpacity><SkipForward weight="fill" size={32} /></TouchableOpacity>
@@ -78,40 +76,40 @@ export default function Banca() {
         }
     };
 
+    const navItems = [
+        { icon: <Video size={60} weight='fill' />, type: 'video', label: 'Vídeos' },
+        { icon: <SpeakerSimpleHigh size={60} weight='fill' />, type: 'audio', label: 'Áudios' },
+        { icon: <Newspaper size={60} weight='fill' />, type: 'artigo', label: 'Artigos' },
+        { icon: <BookOpen size={60} weight='fill' />, type: 'questao', label: 'Questões' },
+    ];
+
     return (
-        <ScrollView style={{ flex: 1, backgroundColor: theme.colors.background }}>
+        <ScrollView style={styles.container}>
             <PerfilHeader />
 
-            <View style={{ gap: 10, margin: 15, borderRadius: 5 }}>
-                <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold' }}>Banca de estudos</Text>
+            <View style={styles.contentWrapper}>
+                <Text style={styles.heading}>Banca de estudos</Text>
 
-                {/* Ícones de navegação */}
-                <View style={{ flexDirection: 'row', gap: 10 }}>
-                    {[
-                        { icon: <Video size={60} weight='fill' />, type: 'video', label: 'Vídeos' },
-                        { icon: <SpeakerSimpleHigh size={60} weight='fill' />, type: 'audio', label: 'Áudios' },
-                        { icon: <Newspaper size={60} weight='fill' />, type: 'artigo', label: 'Artigos' },
-                        { icon: <BookOpen size={60} weight='fill' />, type: 'questao', label: 'Questões' },
-                    ].map(({ icon, type, label }) => (
-                        <TouchableOpacity key={type} onPress={() => handleNavigate(type)} style={{ flex: 1, alignItems: 'center' }}>
-                            <View style={{ backgroundColor: theme.colors.textLight, padding: 8, borderRadius: 10 }}>
+                <View style={styles.navigationRow}>
+                    {navItems.map(({ icon, type, label }) => (
+                        <TouchableOpacity key={type} onPress={() => handleNavigate(type)} style={styles.navButton}>
+                            <View style={styles.navIconBackground}>
                                 {React.cloneElement(icon, { color: theme.colors.primary })}
                             </View>
-                            <Text style={{ color: theme.colors.text, fontSize: 16 }}>{label}</Text>
+                            <Text style={styles.navLabel}>{label}</Text>
                         </TouchableOpacity>
                     ))}
                 </View>
 
-                {/* POPULARES */}
-                <View style={{ gap: 10 }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
+                <View style={styles.popularesWrapper}>
+                    <View style={styles.popularesHeader}>
                         <SlidersHorizontal color={theme.colors.text} size={24} weight='fill' />
-                        <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold' }}>Populares</Text>
+                        <Text style={styles.popularesTitle}>Populares</Text>
                     </View>
 
-                    {mockPopularesBanca.map((post, index) => (
+                    {mockPopularesBanca.map((post) => (
                         <PostCard key={post.id} post={post}>
-                            {renderPostContent(post, index)}
+                            {renderPostContent(post)}
                         </PostCard>
                     ))}
                 </View>

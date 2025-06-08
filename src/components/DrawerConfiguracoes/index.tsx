@@ -3,6 +3,7 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import SideDrawer from '../SideDrawer';
 import theme from '../../assets/themes/THEMES';
 import { useTypedNavigation } from '../../hooks/useNavigate';
+import { styles } from './styles';
 
 interface Props {
     visible: boolean;
@@ -10,7 +11,6 @@ interface Props {
 }
 
 export default function DrawerConfiguracoes({ visible, onClose }: Props) {
-
     const navigation = useTypedNavigation();
 
     const handleNavigate = () => {
@@ -20,47 +20,25 @@ export default function DrawerConfiguracoes({ visible, onClose }: Props) {
 
     return (
         <SideDrawer visible={visible} onClose={onClose}>
-            <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold', marginBottom: 10, marginTop: 10 }}>
-                Configurações
-            </Text>
+            <Text style={styles.title}>Configurações</Text>
 
-            <View style={{ gap: 10 }}>
-                <Text style={{ color: theme.colors.text, fontWeight: 'bold' }}>
-                    Itens salvos
-                </Text>
-                <Text style={{ color: theme.colors.text, marginLeft: 10 }}>
-                    Fórum
-                </Text>
-                <Text style={{ color: theme.colors.text, marginLeft: 10 }}>
-                    Banca
-                </Text>
-                <Text style={{ color: theme.colors.text, marginLeft: 10 }}>
-                    Loja
-                </Text>
-                <Text style={{ color: theme.colors.text, fontWeight: 'bold' }}>
-                    Curtidos e descurtidos
-                </Text>
-                <Text style={{ color: theme.colors.text, fontWeight: 'bold' }}>
-                    Sua conta
-                </Text>
-                <Text style={{ color: theme.colors.text, fontWeight: 'bold' }}>
-                    Privacidade
-                </Text>
-                <Text style={{ color: theme.colors.text, fontWeight: 'bold' }}>
-                    Acessibilidade
-                </Text>
-                <Text style={{ color: theme.colors.text, fontWeight: 'bold' }}>
-                    Sobre o aplicativo
-                </Text>
-                <TouchableOpacity onPress={() => handleNavigate()}>
-                    <Text style={{ color: theme.colors.text, fontWeight: 'bold' }}>
-                        Premium
-                    </Text>
+            <View style={styles.container}>
+                <Text style={styles.boldText}>Itens salvos</Text>
+                <Text style={styles.indentedText}>Fórum</Text>
+                <Text style={styles.indentedText}>Banca</Text>
+                <Text style={styles.indentedText}>Loja</Text>
+                <Text style={styles.boldText}>Curtidos e descurtidos</Text>
+                <Text style={styles.boldText}>Sua conta</Text>
+                <Text style={styles.boldText}>Privacidade</Text>
+                <Text style={styles.boldText}>Acessibilidade</Text>
+                <Text style={styles.boldText}>Sobre o aplicativo</Text>
+
+                <TouchableOpacity onPress={handleNavigate}>
+                    <Text style={styles.boldText}>Premium</Text>
                 </TouchableOpacity>
-                <Text style={{ color: 'red', fontWeight: 'bold' }}>
-                    Sair
-                </Text>
+
+                <Text style={styles.redBoldText}>Sair</Text>
             </View>
-        </SideDrawer >
+        </SideDrawer>
     );
 }

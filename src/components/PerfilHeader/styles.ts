@@ -1,0 +1,38 @@
+import { StyleSheet } from 'react-native';
+import theme from '../../assets/themes/THEMES';
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    height: 230,
+    backgroundColor: theme.colors.secondary,
+    borderBottomEndRadius: 25,
+    borderBottomStartRadius: 25,
+    padding: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 10,
+  },
+  icon: {
+    width: 50,
+    height: 50,
+    alignSelf: 'flex-start',
+  },
+  profileRow: {
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    flexDirection: 'row',
+  },
+  searchContainer: {
+    width: '100%',
+    position: 'relative',
+  },
+  searchIcon: {
+    position: 'absolute',
+    right: 18,
+    top: 11,
+  },
+});
+
+export default styles;

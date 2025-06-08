@@ -16,9 +16,9 @@ import { useNotifications } from '../../context/NotificacaoContext';
 import SideDrawer from '../../components/SideDrawer';
 import { Portal } from 'react-native-paper';
 import CustomButton from '../../components/customButton/CustomButton';
+import { styles } from './styles';
 
 const { width, height } = Dimensions.get('screen');
-
 const drawerWidth = width * 0.6;
 
 interface DrawerNotificacaoProps {
@@ -74,39 +74,25 @@ export default function DrawerNotificacao({ visible, onClose }: DrawerNotificaca
 
     if (!shouldRender) return null;
 
-
     return (
         <Portal>
             <SideDrawer visible={visible} onClose={onClose} title="Notificações">
-                <TouchableOpacity onPress={handleSeenNotifications} style={{ paddingBottom: 5 }}>
-                    <Text style={{ color: theme.colors.gray, fontSize: 13 }}>
-                        Ler todas
-                    </Text>
+                <TouchableOpacity onPress={handleSeenNotifications} style={styles.lerTodas}>
+                    <Text style={styles.lerTodasText}>Ler todas</Text>
                 </TouchableOpacity>
 
-                <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 15 }}>
+                <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent}>
                     {notifications.map((notification) => (
                         <TouchableOpacity
                             key={notification.id}
                             onPress={() => handleOpenNotification(notification.id)}
-                            style={{
-                                backgroundColor: theme.colors.background,
-                                padding: 10,
-                                borderRadius: 5,
-                                marginBottom: 10,
-                                flexDirection: 'row',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                            }}
+                            style={styles.notificationItem}
                         >
                             <Text
-                                style={{
-                                    color: theme.colors.text,
-                                    fontWeight: notification.visualized ? 'normal' : 'bold',
-                                    flexShrink: 1,
-                                    flex: 1,
-                                    marginRight: 8,
-                                }}
+                                style={[
+                                    styles.notificationText,
+                                    notification.visualized ? styles.normalText : styles.boldText
+                                ]}
                                 numberOfLines={1}
                                 ellipsizeMode="tail"
                             >
@@ -120,35 +106,19 @@ export default function DrawerNotificacao({ visible, onClose }: DrawerNotificaca
                 </ScrollView>
             </SideDrawer>
 
-
             <Modal
                 visible={!!selectedNotification}
                 transparent
                 animationType="fade"
                 onRequestClose={() => setSelectedNotification(null)}
             >
-                <View style={{
-                    flex: 1,
-                    backgroundColor: 'rgba(0,0,0,0.4)',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: 20
-                }}>
-                    <View style={{
-                        backgroundColor: theme.colors.background,
-                        borderRadius: 10,
-                        padding: 20,
-                        gap: 10,
-                        width: '100%',
-                    }}>
+                <View style={styles.modalOverlay}>
+                    <View style={styles.modalContent}>
 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-
-                            <Text style={{ fontSize: 16, fontWeight: 'bold', color: theme.colors.text }}>
-                                Notificação
-                            </Text>
+                        <View style={styles.modalHeader}>
+                            <Text style={styles.modalTitle}>Notificação</Text>
                             <Pressable
-                                style={{ padding: 8 }}
+                                style={styles.modalCloseButton}
                                 hitSlop={10}
                                 onPress={() => setSelectedNotification(null)}
                             >
@@ -156,11 +126,15 @@ export default function DrawerNotificacao({ visible, onClose }: DrawerNotificaca
                             </Pressable>
                         </View>
 
-                        <Text style={{ fontSize: 15, color: theme.colors.text }}>
+                        <Text style={styles.modalText}>
                             {selectedNotification?.name}
                         </Text>
 
-                        <CustomButton title='Ver' onPress={() => console.log('apertou')} style={{ backgroundColor: theme.colors.primary, width: 80, alignSelf: 'flex-end', marginBottom: 8 }} />
+                        <CustomButton
+                            title='Ver'
+                            onPress={() => console.log('apertou')}
+                            style={styles.modalButton}
+                        />
 
                     </View>
                 </View>
@@ -168,27 +142,3 @@ export default function DrawerNotificacao({ visible, onClose }: DrawerNotificaca
         </Portal>
     );
 }
-
-const styles = StyleSheet.create({
-    overlayContainer: {
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        zIndex: 999,
-    },
-    overlay: {
-        ...StyleSheet.absoluteFillObject,
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    },
-    drawer: {
-        position: 'absolute',
-        right: 0,
-        height: height,
-        width: drawerWidth,
-        backgroundColor: theme.colors.textLight,
-        padding: 24,
-    },
-
-});

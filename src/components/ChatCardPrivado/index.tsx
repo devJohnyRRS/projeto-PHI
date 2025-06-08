@@ -1,9 +1,7 @@
-import { Pressable, Text, View } from 'react-native'
-import FotoPerfil from '../FotoPerfil'
-import theme from "../../assets/themes/THEMES";
-import { DotsThreeOutlineVertical, ChatCircle, ThumbsUp, ThumbsDown, BookmarkSimple } from "phosphor-react-native";
-import Badge from '../Badge';
-import { useTypedNavigation } from '../../hooks/useNavigate';
+import { Text, View } from 'react-native';
+import FotoPerfil from '../FotoPerfil';
+import theme from '../../assets/themes/THEMES';
+import { styles } from './styles';
 
 interface ChatCardPrivadoProps {
     chatPriva: {
@@ -17,17 +15,8 @@ interface ChatCardPrivadoProps {
 
 function ChatCardPrivado({ chatPriva }: ChatCardPrivadoProps) {
     return (
-        <View
-            style={{
-                backgroundColor: theme.colors.textLight,
-                width: '100%',
-                marginBottom: 20,
-                padding: 10,
-                borderRadius: 5,
-                flexDirection: 'column',
-            }}
-        >
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <View style={styles.container}>
+            <View style={styles.header}>
                 <FotoPerfil
                     name={chatPriva.name}
                     username={chatPriva.username}
@@ -36,26 +25,16 @@ function ChatCardPrivado({ chatPriva }: ChatCardPrivadoProps) {
                 />
             </View>
 
-            <Text style={{ fontSize: 10, textAlign: 'right' }}>{chatPriva.time}</Text>
+            <Text style={styles.time}>{chatPriva.time}</Text>
 
-            <View style={{ marginTop: 10, gap: 10 }}>
-                <Text style={{ fontSize: 16 }}>{chatPriva.content}</Text>
+            <View style={styles.contentWrapper}>
+                <Text style={styles.content}>{chatPriva.content}</Text>
 
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        gap: 10,
-                        marginTop: 10,
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                    }}
-                >
-
-                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 0 }}>
-                        </View>
-                    </View>
+                <View style={styles.footer}>
+                    <View style={styles.emptyRow} />
                 </View>
             </View>
+        </View>
     );
 }
 
