@@ -22,7 +22,7 @@ function FotoPerfil({
         <View style={{
             display: 'flex',
             flexDirection: 'row',
-            gap: 15,
+            gap: 5,
             alignContent: 'center',
             alignItems: 'center'
         }}>

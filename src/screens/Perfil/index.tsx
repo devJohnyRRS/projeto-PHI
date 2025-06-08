@@ -15,7 +15,7 @@ import { Trophy } from '../../types/Trophy';
 export default function Perfil() {
     const navigation = useTypedNavigation();
 
-    const profile = require("../../../assets/default-profile.jpg");
+    const profile = require("../../../assets/gustavo.png");
     const flag = require("../../../assets/brasil.png");
 
     const [selectedTrophy, setSelectedTrophy] = useState<Trophy | null>(null);

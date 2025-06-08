@@ -13,8 +13,8 @@ import PapeisDeParede from '../screens/PapeisDeParede';
 import Icones from '../screens/Icones';
 import Molduras from '../screens/Molduras';
 import Assinar from '../screens/Assinar';
-import Chat from "../screens/chat/Chat";
 import ChatPrivado from "../screens/chat/ChatPrivado";
+import CriarAssunto from '../screens/CriarAssunto';
 
 
 const Stack = createStackNavigator<MainStackParamList, "MainStack">();
@@ -25,7 +25,6 @@ export default function AppNavigator() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="CadastroOne" component={CadastroOne} />
       <Stack.Screen name="CadastroTwo" component={CadastroTwo} />
-      <Stack.Screen name="Chat" component={Chat} />
       <Stack.Screen name="ChatPrivado" component={ChatPrivado} />
       <Stack.Screen name="Home" component={AppTabs} />
       <Stack.Screen name="Questoes" component={Questoes} />
@@ -36,6 +35,7 @@ export default function AppNavigator() {
       <Stack.Screen name="Icones" component={Icones} />
       <Stack.Screen name="Molduras" component={Molduras} />
       <Stack.Screen name="Assinar" component={Assinar} />
+      <Stack.Screen name="CriarAssunto" component={CriarAssunto} />
     </Stack.Navigator>
   );
 }
