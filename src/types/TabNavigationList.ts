@@ -1,4 +1,11 @@
 export type RoutesList = {
-  // Home: undefined;
-  // Profile: undefined;
+  Home: undefined;
+  Perfil: undefined;
+  Banca: undefined;
+  Loja: undefined;
+  // Questoes: undefined;
+  // Audios: undefined;
+  // Videos: undefined;
+  // Artigos: undefined;
+  App: undefined;
 };

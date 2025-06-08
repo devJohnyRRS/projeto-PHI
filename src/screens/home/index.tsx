@@ -13,7 +13,7 @@ export default function Home() {
 
             <PerfilHeader />
 
-            <View style={{ margin: 24, gap: 10 }}>
+            <View style={{ margin: 15, gap: 10, marginBottom: 15 }}>
 
                 <Carrosel />
 

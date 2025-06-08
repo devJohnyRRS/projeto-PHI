@@ -7,17 +7,15 @@ import { useTypedNavigation } from '../../hooks/useNavigate'
 
 
 export default function AssuntoButton({ style }: any) {
-    const navigation = useTypedNavigation();
+    // const navigation = useTypedNavigation();
 
-const handleNavigation = () => {
-        //navigation.navigate();
-    };
+    // const handleNavigate = () => {
+
+    // };
 
     return (
         <CustomButton
-            onPress={() => handleNavigation()
-                //console.log('ver mais')
-                }
+            onPress={() => { }}
             style={{
                 ...style,
                 backgroundColor: theme.colors.primary,

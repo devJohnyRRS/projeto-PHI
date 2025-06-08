@@ -12,7 +12,7 @@ import theme from '../../assets/themes/THEMES';
 import CustomButton from '../customButton/CustomButton';
 
 const screenWidth = Dimensions.get('window').width;
-const horizontalMargin = 48; // 24 + 24 de margin do container na Home
+const horizontalMargin = 30; // 15 + 15 de margin do container na Home
 const itemWidth = screenWidth - horizontalMargin;
 
 const banners = [
@@ -164,7 +164,7 @@ export default function Carrosel() {
                         alignItems: 'center',
                     }}
                 >
-                    <CaretLeft color={theme.colors.textLight} size={20} />
+                    <CaretLeft color={theme.colors.textLight} size={20} weight='bold' />
                 </CustomButton>
 
                 <CustomButton
@@ -178,7 +178,7 @@ export default function Carrosel() {
                         alignItems: 'center',
                     }}
                 >
-                    <CaretRight color={theme.colors.textLight} size={20} />
+                    <CaretRight color={theme.colors.textLight} size={20} weight='bold' />
                 </CustomButton>
             </View>
 

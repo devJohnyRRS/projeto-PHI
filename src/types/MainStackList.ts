@@ -4,6 +4,16 @@ export type MainStackParamList = {
   CadastroTwo: undefined;
   Home: undefined;
   Perfil: undefined;
+  Banca: undefined;
+  Questoes: undefined;
+  Audios: undefined;
+  Videos: undefined;
+  Artigos: undefined;
+  Loja: undefined;
+  PapeisDeParede: undefined;
+  Icones: undefined;
+  Molduras: undefined;
+  Assinar: undefined;
   App: undefined;
   Chat: undefined;
   ChatPrivado: undefined;
