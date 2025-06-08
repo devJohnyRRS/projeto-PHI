@@ -7,7 +7,7 @@ export const mockMoldurasLoja: StoreItem[] = [
     title: 'Moldura Dourada',
     blocked: true,
     price: 500,
-    level: 3,
+    level: 'Premium',
     color: '#FFD700',
   },
   {

@@ -15,6 +15,5 @@ export type MainStackParamList = {
   Molduras: undefined;
   Assinar: undefined;
   App: undefined;
-  Chat: undefined;
   ChatPrivado: undefined;
 };

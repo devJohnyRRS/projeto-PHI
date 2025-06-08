@@ -26,6 +26,7 @@ export interface AssuntoPost extends BasePost {
   name: string;
   username: string;
   profileImage: any;
+  borderColor?: string;
   questionTag?: QuestionTag;
 }
 
@@ -34,6 +35,7 @@ export interface MediaPost extends BasePost {
   title: string;
   link?: string;
   audio?: string;
+  image?: any;
   description?: string;
 }
 

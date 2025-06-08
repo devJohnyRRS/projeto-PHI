@@ -2,14 +2,17 @@ import { MediaPost } from '../types/Posts';
 
 const audio1 = require('../../assets/audios/audio-1.mp3');
 const audio2 = require('../../assets/audios/audio-2.mp3');
+const image1 = require('../../assets/matematica.avif');
+const image2 = require('../../assets/portugues.jpg');
 
 export const mockPostsAudios: (MediaPost & { file: any })[] = [
   {
     id: 1,
     type: 'audio',
-    title: 'Jockey di gue?',
+    title: 'Matemática com letras: É ético?',
     link: '',
     file: audio1,
+    image: image1,
     stats: {
       badge: ['Jockey', 'de', 'Galinha'],
       time: '30min atrás',
@@ -22,9 +25,10 @@ export const mockPostsAudios: (MediaPost & { file: any })[] = [
   {
     id: 2,
     type: 'audio',
-    title: 'O que foi o Holocausto?',
+    title: 'Por que Porque Porquê Por quê?',
     link: '',
     file: audio2,
+    image: image2,
     stats: {
       badge: ['Análise e desenvolvimento'],
       time: '1h atrás',

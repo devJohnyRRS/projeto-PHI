@@ -3,9 +3,6 @@ export type RoutesList = {
   Perfil: undefined;
   Banca: undefined;
   Loja: undefined;
-  // Questoes: undefined;
-  // Audios: undefined;
-  // Videos: undefined;
-  // Artigos: undefined;
+  Chat: undefined;
   App: undefined;
 };
