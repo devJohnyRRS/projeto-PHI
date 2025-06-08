@@ -6,6 +6,16 @@ export type MainStackParamList = {
   Perfil: undefined;
   Banca: undefined;
   Questoes: undefined;
+  DetalheQuestao: {
+    question: {
+      color: string;
+      code: string;
+      title: string;
+      description: string;
+      alternativas?: string[];
+      alternativaCorreta?: number;
+    };
+  };
   Audios: undefined;
   Videos: undefined;
   Artigos: undefined;

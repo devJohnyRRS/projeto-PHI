@@ -1,7 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RoutesList } from "../types/TabNavigationList";
-import Home from '../screens/Home';
 import Banca from "../screens/Banca";
 import Perfil from "../screens/Perfil";
 import {
@@ -12,6 +11,7 @@ import {
 } from "phosphor-react-native";
 import theme from "../assets/themes/THEMES";
 import Loja from '../screens/Loja';
+import Home from "../screens/home";
 
 const Tab = createBottomTabNavigator<RoutesList, "TabNavigation">();
 
