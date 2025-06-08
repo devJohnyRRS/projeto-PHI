@@ -63,7 +63,7 @@ Bem-vindo ao **PHI**, uma plataforma mobile de estudos gamificada, feita em Reac
     ```
 3. **Rode o projeto:**
     ```bash
-    npm start
+    npm run start
     # ou
     expo start
     ```
