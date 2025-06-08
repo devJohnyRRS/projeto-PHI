@@ -48,7 +48,7 @@ export default function Banca() {
                     <>
                         <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 10 }}>{post.title}</Text>
                         <View style={{ gap: 10, alignItems: 'center' }}>
-                            <Image source={imagem} style={{ width: '100%', height: 200, borderRadius: 5 }} />
+                            <Image source={post.image} style={{ width: '100%', height: 200, borderRadius: 5 }} />
                             {/* Apenas mock, substitua com player real se necessário */}
                             <View style={{ width: '100%', paddingHorizontal: 20 }}>
                                 <Slider

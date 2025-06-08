@@ -1,11 +1,15 @@
 import { StoreItem } from '../types/StoreItem';
 
-const background = require('../../assets/vinao.jpg');
+const deserto = require('../../assets/papeis de parede/deserto.webp');
+const floresta = require('../../assets/papeis de parede/floresta.avif');
+const galaxia = require('../../assets/papeis de parede/galaxia.jpg');
+const montanha = require('../../assets/papeis de parede/montanha.avif');
+const noite = require('../../assets/papeis de parede/noite.jpg');
 
 export const mockPapeisLoja: StoreItem[] = [
   {
     id: 1,
-    image: background,
+    image: galaxia,
     type: 'papel',
     title: 'Galáxia Profunda',
     blocked: true,
@@ -14,7 +18,7 @@ export const mockPapeisLoja: StoreItem[] = [
   },
   {
     id: 2,
-    image: background,
+    image: montanha,
     type: 'papel',
     title: 'Montanhas ao Amanhecer',
     blocked: false,
@@ -23,7 +27,7 @@ export const mockPapeisLoja: StoreItem[] = [
   },
   {
     id: 3,
-    image: background,
+    image: floresta,
     type: 'papel',
     title: 'Floresta Mística',
     blocked: true,
@@ -32,7 +36,7 @@ export const mockPapeisLoja: StoreItem[] = [
   },
   {
     id: 4,
-    image: background,
+    image: noite,
     type: 'papel',
     title: 'Noite Urbana',
     blocked: false,
@@ -41,7 +45,7 @@ export const mockPapeisLoja: StoreItem[] = [
   },
   {
     id: 5,
-    image: background,
+    image: deserto,
     type: 'papel',
     title: 'Deserto do Silêncio',
     blocked: true,

@@ -1,5 +1,7 @@
 import { MediaPost } from '../types/Posts';
 
+const image = require('../../assets/portugues.jpg');
+
 export const mockPopularesBanca: MediaPost[] = [
   {
     id: 1,
@@ -21,16 +23,17 @@ export const mockPopularesBanca: MediaPost[] = [
   {
     id: 2,
     type: 'audio',
-    title: 'Jockey di gue?',
+    title: 'Por que Porque Porquê Por quê?',
     link: '',
-    // file: audio1,
+    // file: audio2,
+    image,
     stats: {
-      badge: ['Jockey', 'de', 'Galinha'],
-      time: '30min atrás',
-      content: 'Aprenda sobre bancos de dados relacionais e não relacionais.',
-      comments: 589,
-      likes: 5000,
-      dislikes: 1,
+      badge: ['Análise e desenvolvimento'],
+      time: '1h atrás',
+      content: 'Entenda um dos períodos mais sombrios da história moderna.',
+      comments: 421,
+      likes: 4200,
+      dislikes: 3,
     },
   },
   {

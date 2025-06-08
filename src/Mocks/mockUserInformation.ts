@@ -1,3 +1,4 @@
+import { Trophy } from '../types/Trophy';
 import { UserInformation } from '../types/UserInformation';
 import { mockPostsAssuntos } from './mockPostsAssuntos';
 
@@ -12,7 +13,20 @@ export const mockUserInformation: UserInformation = {
   following: 5,
   tag: 'História',
   bio: 'Apaixonado por História e tecnologia.',
-  trophies: ['Primeiro Acesso', 'Conquistador de Tópicos'],
+  trophies: [
+    {
+      id: 1,
+      name: 'Historiador Iniciante',
+      description: 'Conquistado por selecionar História como matéria favorita.',
+      icon: require('../../assets/trofeus/trofeu-prata.png'),
+    },
+    {
+      id: 2,
+      name: 'Respondão',
+      description: 'Conquistado por responder 10 perguntas.',
+      icon: require('../../assets/trofeus/trofeu-prata.png'),
+    },
+  ],
   comments: 12,
   subjects: mockPostsAssuntos,
 };

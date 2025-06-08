@@ -5,6 +5,7 @@ import CustomButton from '../customButton/CustomButton'
 import { Text } from 'react-native'
 import { useTypedNavigation } from '../../hooks/useNavigate'
 
+
 export default function AssuntoButton({ style }: any) {
     // const navigation = useTypedNavigation();
 

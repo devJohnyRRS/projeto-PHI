@@ -5,12 +5,15 @@ import Banca from "../screens/Banca";
 import Perfil from "../screens/Perfil";
 import {
   CalendarBlank,
+  Chat,
+  ChatCircleText,
   House,
   Storefront,
   User,
 } from "phosphor-react-native";
 import theme from "../assets/themes/THEMES";
 import Loja from '../screens/Loja';
+import ChatScreen from '../screens/chat/Chat';
 import Home from "../screens/home";
 
 const Tab = createBottomTabNavigator<RoutesList, "TabNavigation">();
@@ -49,6 +52,14 @@ export default function AppTabs() {
                     weight={focused ? "fill" : "regular"}
                   />
                 );
+              case "Chat":
+                return (
+                  <ChatCircleText
+                    color={color}
+                    size={24}
+                    weight={focused ? "fill" : "regular"}
+                  />
+                );
               case "Perfil":
                 return (
                   <User
@@ -65,16 +76,6 @@ export default function AppTabs() {
                     weight={focused ? "fill" : "regular"}
                   />
                 );
-              // Adicione as outras telas aqui, exemplo:
-              // case "Questoes":
-              //   return (
-              //     <BookOpen
-              //       color={color}
-              //       size={24}
-              //       weight={focused ? "fill" : "regular"}
-              //     />
-              //   );
-              default:
                 return null;
             }
           },
@@ -85,6 +86,7 @@ export default function AppTabs() {
         {/* Outras telas aqui, exemplo: */}
         {/* <Tab.Screen name="Chat" component={Chat} /> */}
         <Tab.Screen name="Loja" component={Loja} />
+        <Tab.Screen name="Chat" component={ChatScreen} />
         <Tab.Screen name="Perfil" component={Perfil} />
       </Tab.Navigator>
     </>

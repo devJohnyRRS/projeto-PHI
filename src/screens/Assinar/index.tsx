@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import theme from '../../assets/themes/THEMES';
 import CustomButton from '../../components/customButton/CustomButton';
 import PlanoCard from '../../components/PlanoCard';

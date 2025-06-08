@@ -1,10 +1,14 @@
-import { Text, View } from 'react-native'
-import FotoPerfil from '../FotoPerfil'
+import { useState } from 'react';
+import { Text, View, TouchableOpacity } from 'react-native';
+import FotoPerfil from '../FotoPerfil';
 import theme from "../../assets/themes/THEMES";
-import { DotsThreeOutlineVertical, ChatCircle, ThumbsUp, ThumbsDown, BookmarkSimple, Video, BookOpen, Newspaper, SpeakerSimpleHigh } from "phosphor-react-native";
+import {
+    DotsThreeOutlineVertical, ChatCircle, ThumbsUp,
+    ThumbsDown, BookmarkSimple, Video, BookOpen,
+    Newspaper, SpeakerSimpleHigh
+} from "phosphor-react-native";
 import Badge from '../Badge';
 import QuestionTag from '../QuestionTag';
-// PostCard.tsx
 import { Post } from '../../types/Posts';
 
 interface PostCardProps {
@@ -15,6 +19,44 @@ interface PostCardProps {
 function PostCard({ post, children }: PostCardProps) {
     const isAssunto = post.type === 'assunto';
 
+    const [liked, setLiked] = useState(false);
+    const [disliked, setDisliked] = useState(false);
+    const [saved, setSaved] = useState(false);
+    const [likesCount, setLikesCount] = useState(post.stats.likes);
+    const [dislikesCount, setDislikesCount] = useState(post.stats.dislikes);
+
+    const toggleLike = () => {
+        if (liked) {
+            setLiked(false);
+            setLikesCount(likesCount - 1);
+        } else {
+            setLiked(true);
+            setLikesCount(likesCount + 1);
+            if (disliked) {
+                setDisliked(false);
+                setDislikesCount(dislikesCount - 1);
+            }
+        }
+    };
+
+    const toggleDislike = () => {
+        if (disliked) {
+            setDisliked(false);
+            setDislikesCount(dislikesCount - 1);
+        } else {
+            setDisliked(true);
+            setDislikesCount(dislikesCount + 1);
+            if (liked) {
+                setLiked(false);
+                setLikesCount(likesCount - 1);
+            }
+        }
+    };
+
+    const toggleSave = () => {
+        setSaved(!saved);
+    };
+
     return (
         <View style={{
             backgroundColor: theme.colors.textLight,
@@ -23,14 +65,14 @@ function PostCard({ post, children }: PostCardProps) {
             borderRadius: 5,
             flexDirection: 'column',
         }}>
-            {/* HEADER */}
+
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                 {isAssunto ? (
                     <FotoPerfil
                         name={post.name}
                         username={post.username}
                         image={post.profileImage}
-                        border={theme.colors.gold}
+                        border={post.borderColor ? post.borderColor : ""}
                     />
                 ) : (
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
@@ -61,7 +103,6 @@ function PostCard({ post, children }: PostCardProps) {
             )}
 
             <View style={{ marginTop: 5, gap: 10 }}>
-
                 {children}
 
                 {/* FOOTER */}
@@ -78,17 +119,19 @@ function PostCard({ post, children }: PostCardProps) {
                     </View>
 
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-                            <ThumbsUp size={30} weight="fill" color={theme.colors.gray} />
-                            <Text style={{ fontSize: 16, color: theme.colors.gray }}>{post.stats.likes}</Text>
-                        </View>
+                        <TouchableOpacity onPress={toggleLike} style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
+                            <ThumbsUp size={30} weight="fill" color={liked ? theme.colors.primary : theme.colors.gray} />
+                            <Text style={{ fontSize: 16, color: theme.colors.gray }}>{likesCount}</Text>
+                        </TouchableOpacity>
 
-                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-                            <ThumbsDown size={30} weight="fill" color={theme.colors.gray} />
-                            <Text style={{ fontSize: 16, color: theme.colors.gray }}>{post.stats.dislikes}</Text>
-                        </View>
+                        <TouchableOpacity onPress={toggleDislike} style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
+                            <ThumbsDown size={30} weight="fill" color={disliked ? theme.colors.primary : theme.colors.gray} />
+                            <Text style={{ fontSize: 16, color: theme.colors.gray }}>{dislikesCount}</Text>
+                        </TouchableOpacity>
 
-                        <BookmarkSimple size={30} weight="fill" color={theme.colors.gray} />
+                        <TouchableOpacity onPress={toggleSave}>
+                            <BookmarkSimple size={30} weight="fill" color={saved ? theme.colors.primary : theme.colors.gray} />
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>

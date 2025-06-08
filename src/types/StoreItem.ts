@@ -6,5 +6,5 @@ export interface StoreItem {
   title: string;
   blocked: boolean;
   price: number;
-  level: number;
+  level: any;
 }
