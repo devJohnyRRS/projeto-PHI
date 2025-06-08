@@ -144,7 +144,7 @@ export default function DetalheQuestao({ route }) {
                   style={[
                     styles.alternativaTouchable,
                     alternativaStatus === "correta" &&
-                      styles.alternativaCorreta,
+                    styles.alternativaCorreta,
                     alternativaStatus === "errada" && styles.alternativaErrada,
                   ]}
                   disabled={alternativaSelecionada !== null}
@@ -160,7 +160,7 @@ export default function DetalheQuestao({ route }) {
                     style={[
                       styles.alternativaText,
                       alternativaSelecionada === idx &&
-                        styles.alternativaSelecionadaText,
+                      styles.alternativaSelecionadaText,
                     ]}
                   >
                     {alt}

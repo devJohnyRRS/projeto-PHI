@@ -27,4 +27,5 @@ export type MainStackParamList = {
   App: undefined;
   ChatPrivado: undefined;
   Chat: undefined;
+  CriarAssunto: undefined;
 };

@@ -14,7 +14,7 @@ import {
 import theme from "../assets/themes/THEMES";
 import Loja from '../screens/Loja';
 import ChatScreen from '../screens/chat/Chat';
-import Home from "../screens/home";
+import Home from '../screens/Home';
 
 const Tab = createBottomTabNavigator<RoutesList, "TabNavigation">();
 

@@ -6,10 +6,9 @@ import PerfilHeader from '../../components/PerfilHeader'
 import { useTypedNavigation } from '../../hooks/useNavigate'
 import LojaCard from '../../components/LojaCard'
 import { mockPopularesLoja } from '../../Mocks/mockPopularesLoja'
+import { styles } from './styles'
 
 export default function Loja() {
-
-
     const navigation = useTypedNavigation();
 
     const handleNavigate = (type: string) => {
@@ -20,34 +19,33 @@ export default function Loja() {
     };
 
     return (
-        <ScrollView style={{ flex: 1, backgroundColor: theme.colors.background }}>
+        <ScrollView style={styles.container}>
             <PerfilHeader />
 
-            <View style={{ gap: 10, margin: 15, borderRadius: 5 }}>
-                <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold' }}>Loja</Text>
+            <View style={styles.content}>
+                <Text style={styles.title}>Loja</Text>
 
                 {/* Ícones de navegação */}
-                <View style={{ flexDirection: 'row', gap: 10 }}>
+                <View style={styles.navigationIconsContainer}>
                     {[
                         { icon: <Circle size={60} />, type: 'moldura', label: 'Molduras' },
                         { icon: <Sticker size={60} weight='fill' />, type: 'papel', label: 'Papéis de parede' },
                         { icon: <User size={60} weight='fill' />, type: 'icone', label: 'Ícones' },
                         { icon: <Stamp size={60} weight='fill' />, type: 'assinar', label: 'Assinar' },
                     ].map(({ icon, type, label }) => (
-                        <TouchableOpacity key={type} onPress={() => handleNavigate(type)} style={{ flex: 1, alignItems: 'center' }}>
-                            <View style={{ backgroundColor: theme.colors.textLight, padding: 8, borderRadius: 10 }}>
+                        <TouchableOpacity key={type} onPress={() => handleNavigate(type)} style={styles.navigationIcon}>
+                            <View style={styles.iconBackground}>
                                 {React.cloneElement(icon, { color: theme.colors.primary })}
                             </View>
-                            <Text style={{ color: theme.colors.text, fontSize: 16, textAlign: 'center' }}>{label}</Text>
+                            <Text style={styles.iconLabel}>{label}</Text>
                         </TouchableOpacity>
                     ))}
                 </View>
 
-                <View style={{ gap: 10 }}>
-
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
+                <View style={styles.popularesSection}>
+                    <View style={styles.popularesHeader}>
                         <SlidersHorizontal color={theme.colors.text} size={24} weight='fill' />
-                        <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold' }}>Populares</Text>
+                        <Text style={styles.popularesTitle}>Populares</Text>
                     </View>
 
                     {mockPopularesLoja.map((item) => (
@@ -56,7 +54,6 @@ export default function Loja() {
                             key={item.id}
                         />
                     ))}
-
                 </View>
             </View>
         </ScrollView >

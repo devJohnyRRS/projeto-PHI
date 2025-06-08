@@ -4,29 +4,28 @@ import theme from '../../assets/themes/THEMES'
 import CustomButton from '../customButton/CustomButton'
 import { Text } from 'react-native'
 import { useTypedNavigation } from '../../hooks/useNavigate'
-
+import { styles } from './styles'
 
 export default function AssuntoButton({ style }: any) {
-    // const navigation = useTypedNavigation();
+    const navigation = useTypedNavigation();
 
-    // const handleNavigate = () => {
-
-    // };
+    const handleNavigate = () => {
+        navigation.navigate('CriarAssunto');
+    };
 
     return (
         <CustomButton
-            onPress={() => { }}
+            onPress={handleNavigate}
             style={{
-                ...style,
                 backgroundColor: theme.colors.primary,
                 borderRadius: 10,
                 flexDirection: 'row',
                 gap: 5,
-                width: 170,
+                width: 170
             }}
         >
             <PencilSimple color={theme.colors.textLight} size={20} weight='fill' />
-            <Text style={{ color: theme.colors.textLight, fontSize: 16, fontWeight: 'bold' }}>
+            <Text style={styles.text}>
                 Criar assunto
             </Text>
         </CustomButton>

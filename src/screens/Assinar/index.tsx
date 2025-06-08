@@ -4,28 +4,27 @@ import theme from '../../assets/themes/THEMES';
 import CustomButton from '../../components/customButton/CustomButton';
 import PlanoCard from '../../components/PlanoCard';
 import BadgeBeneficio from '../../components/BadgeBeneficio';
+import { styles } from './styles';
 
 export default function Assinar() {
-
     const icon = require("../../../assets/favicon.png");
     const backgroundImage = require("../../../assets/premium-background.jpeg");
 
     const [selectedPlan, setSelectedPlan] = useState('Trimestral');
 
     return (
-        <ScrollView style={{ flex: 1, backgroundColor: theme.colors.textLight }}>
+        <ScrollView style={styles.scrollView}>
             <View>
-                <Image source={backgroundImage} style={{ width: '100%', height: 250, resizeMode: 'cover', opacity: 0.6 }} />
-                <Image source={icon} style={{ position: 'absolute', width: 50, height: 50, alignSelf: 'flex-start', top: 30, left: 20 }} />
+                <Image source={backgroundImage} style={styles.backgroundImage} />
+                <Image source={icon} style={styles.icon} />
             </View>
 
-            <Text style={{ fontSize: 25, fontWeight: 'bold', textAlign: 'center', marginTop: 10, color: theme.colors.gold }}>Conheça o Phi! premium!!</Text>
+            <Text style={styles.title}>Conheça o Phi! premium!!</Text>
+
             {/* Benefícios */}
-            <View style={{ padding: 20 }}>
-                <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 20, textAlign: 'center' }}>
-                    Benefícios Exclusivos
-                </Text>
-                <View style={{ gap: 10 }}>
+            <View style={styles.benefitsContainer}>
+                <Text style={styles.sectionTitle}>Benefícios Exclusivos</Text>
+                <View style={styles.benefitsList}>
                     <BadgeBeneficio text="💰 Triplo de moedas ao resolver questões" />
                     <BadgeBeneficio text="🛍️ Todos os itens da loja desbloqueados" />
                     <BadgeBeneficio text="✍️ 1 correção de redação por semana (em breve)" />
@@ -33,11 +32,9 @@ export default function Assinar() {
             </View>
 
             {/* Planos de Assinatura */}
-            <View style={{ paddingHorizontal: 20 }}>
-                <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 20, textAlign: 'center' }}>
-                    Escolha seu plano
-                </Text>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 10 }}>
+            <View style={styles.plansContainer}>
+                <Text style={styles.sectionTitle}>Escolha seu plano</Text>
+                <View style={styles.planCardsWrapper}>
                     <PlanoCard
                         title="Mensal"
                         price="R$ 19,90"
@@ -60,11 +57,13 @@ export default function Assinar() {
                         onPress={() => setSelectedPlan('Anual')}
                     />
                 </View>
-
             </View>
 
-            <CustomButton title='Assinar Agora' onPress={() => { }} style={{ backgroundColor: theme.colors.gold, alignSelf: 'center', marginVertical: 20 }} />
+            <CustomButton
+                title="Assinar Agora"
+                onPress={() => { }}
+                style={styles.subscribeButton}
+            />
         </ScrollView>
     );
 }
-
