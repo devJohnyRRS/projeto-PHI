@@ -24,5 +24,14 @@ export const styles = StyleSheet.create({
     marginLeft: 4,
     fontFamily: theme.fonts.regular,
   },
+  eye: {
+    position: "absolute",
+    right: 10,
+    top: 7,
+    width: 30,
+    height: 30,
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 2,
+  },
 });
-
