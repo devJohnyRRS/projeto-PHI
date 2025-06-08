@@ -3,15 +3,16 @@
 Bem-vindo ao **PHI**, uma plataforma mobile de estudos gamificada, feita em React Native, que reúne questões, artigos, áudios, vídeos, chat, loja de itens e muito mais para ajudar estudantes a aprenderem de forma divertida e eficiente!
 
 ---
-![Screenshot_20250608-173706](https://github.com/user-attachments/assets/7f0c043a-d9b4-401b-afab-bc41b7d8cd80)
-![Screenshot_20250608-173735](https://github.com/user-attachments/assets/cc932e37-8c33-416e-9d63-96a6c9c4988c)
-![Screenshot_20250608-173742](https://github.com/user-attachments/assets/f032d40b-eb4e-4578-ad65-653e172b45fd)
-![Screenshot_20250608-173748](https://github.com/user-attachments/assets/8f6ab1f8-15f5-4396-8dc2-87fa8a9f4880)
-![Screenshot_20250608-173752](https://github.com/user-attachments/assets/217a5853-f39b-425d-9766-d74ae489f9ca)
-![Screenshot_20250608-173757](https://github.com/user-attachments/assets/ed45f951-5ed4-4bf3-bbd5-6a82738df467)
-![Screenshot_20250608-173805](https://github.com/user-attachments/assets/7270aa2e-7021-4f11-9781-334ed7bec59a)
-![Screenshot_20250608-174554](https://github.com/user-attachments/assets/8059fc90-9dfd-4bd4-971d-54426588a36d)
----
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7f0c043a-d9b4-401b-afab-bc41b7d8cd80" width="200"/>
+  <img src="https://github.com/user-attachments/assets/cc932e37-8c33-416e-9d63-96a6c9c4988c" width="200"/>
+  <img src="https://github.com/user-attachments/assets/f032d40b-eb4e-4578-ad65-653e172b45fd" width="200"/>
+  <img src="https://github.com/user-attachments/assets/8f6ab1f8-15f5-4396-8dc2-87fa8a9f4880" width="200"/>
+  <img src="https://github.com/user-attachments/assets/217a5853-f39b-425d-9766-d74ae489f9ca" width="200"/>
+  <img src="https://github.com/user-attachments/assets/ed45f951-5ed4-4bf3-bbd5-6a82738df467" width="200"/>
+  <img src="https://github.com/user-attachments/assets/7270aa2e-7021-4f11-9781-334ed7bec59a" width="200"/>
+  <img src="https://github.com/user-attachments/assets/8059fc90-9dfd-4bd4-971d-54426588a36d" width="200"/>
+</p>
 
 ## ✨ Funcionalidades
 
