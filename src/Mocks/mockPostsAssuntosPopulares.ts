@@ -16,17 +16,13 @@ export const mockPostsAssuntosPopulares: Post[] = [
     username: '@GustavoSouza1304',
     profileImage: profileGustavo,
     stats: {
-      badge: ['Matemática', 'Álgebra'],
-      time: '30min atrás',
+      badge: ['História'],
+      time: '1h atrás',
       content:
-        'Pessoal, vocês podem me ajudar com essa equação do app? 🔢\n\n"Resolva para x: 2x + 5 = 17". Já tentei isolar o x, mas não consegui achar a resposta.',
-      comments: 32,
-      likes: 120,
-      dislikes: 2,
-    },
-    questionTag: {
-      color: theme.colors.lightBlue,
-      code: '#Q12345',
+        'Sabiam que a Revolução Francesa influenciou vários movimentos no Brasil? Fascinante! 🇫🇷📚',
+      comments: 2,
+      likes: 6,
+      dislikes: 0,
     },
   },
   {
