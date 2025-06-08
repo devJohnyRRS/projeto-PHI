@@ -25,13 +25,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   searchContainer: {
+    marginTop: 30,
     width: '100%',
     position: 'relative',
   },
   searchIcon: {
     position: 'absolute',
     right: 18,
-    top: 11,
+    bottom: -12,
   },
 });
 
