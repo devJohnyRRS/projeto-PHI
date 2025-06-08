@@ -35,6 +35,7 @@ export interface MediaPost extends BasePost {
   title: string;
   link?: string;
   audio?: string;
+  image?: any;
   description?: string;
 }
 

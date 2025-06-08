@@ -65,7 +65,7 @@ function PostCard({ post, children }: PostCardProps) {
             borderRadius: 5,
             flexDirection: 'column',
         }}>
-            {/* HEADER */}
+
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                 {isAssunto ? (
                     <FotoPerfil

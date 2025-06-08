@@ -1,18 +1,24 @@
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import theme from '../../assets/themes/THEMES'
-import { Gear, CaretLeft, Star, PencilSimple, SlidersHorizontal } from 'phosphor-react-native';
+import { Gear, CaretLeft, Star, PencilSimple, SlidersHorizontal, X } from 'phosphor-react-native';
 import CustomButton from '../../components/customButton/CustomButton';
 import AssuntoButton from '../../components/AssuntoButton';
 import PostCard from '../../components/PostCard';
 import { useTypedNavigation } from '../../hooks/useNavigate';
 import { mockUserInformation } from '../../Mocks/mockUserInformation';
+import { Modal } from 'react-native';
+import { useState } from 'react';
+import { Trophy } from '../../types/Trophy';
+
 
 export default function Perfil() {
     const navigation = useTypedNavigation();
 
     const profile = require("../../../assets/default-profile.jpg");
     const flag = require("../../../assets/brasil.png");
+
+    const [selectedTrophy, setSelectedTrophy] = useState<Trophy | null>(null);
 
     const handleGoBack = () => {
         navigation.goBack();
@@ -107,14 +113,26 @@ export default function Perfil() {
             <View style={{ borderBottomWidth: 3, borderColor: theme.colors.lightGray }}>
                 <View style={{ marginVertical: 10, marginHorizontal: 24, gap: 10 }}>
                     <Text style={{ fontWeight: 'bold', fontSize: 16 }}>Bio</Text>
-                    <Text style={{ fontSize: 13, color: theme.colors.gray }}>{mockUserInformation.bio || "Nada por aqui..."}.</Text>
+                    {mockUserInformation.bio ? (
+                        <Text style={{ fontSize: 13, color: theme.colors.text }}>{mockUserInformation.bio}.</Text>
+                    ) : (
+                        <Text style={{ fontSize: 13, color: theme.colors.gray }}>Nada por aqui...</Text>
+                    )
+                    }
                 </View>
             </View>
             <View style={{ borderBottomWidth: 3, borderColor: theme.colors.lightGray }}>
-                <View style={{ marginVertical: 10, marginHorizontal: 24, gap: 10 }}>
+                <View style={{ marginVertical: 10, marginHorizontal: 24, gap: 10, flexDirection: 'row', alignItems: 'flex-start' }}>
                     {mockUserInformation.trophies.length > 0 ? (
-                        mockUserInformation.trophies.map((t, i) => (
-                            <Text key={i} style={{ fontSize: 13 }}>{t}</Text>
+                        mockUserInformation.trophies?.map((trophie) => (
+                            <TouchableOpacity
+                                key={trophie.id}
+                                style={{ width: 90, alignItems: 'center', justifyContent: 'center' }}
+                                onPress={() => setSelectedTrophy(trophie)}
+                            >
+                                <Image source={trophie.icon} style={{ width: 50, height: 50 }} />
+                                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#b3bcc2', textAlign: 'center' }}>{trophie.name}</Text>
+                            </TouchableOpacity>
                         ))
                     ) : (
                         <Text style={{ fontSize: 13, color: theme.colors.gray }}>Nada por aqui...</Text>
@@ -128,6 +146,11 @@ export default function Perfil() {
                         <Text style={{ fontWeight: 'bold', fontSize: 16 }}>Comentários</Text>
                     </View>
                     <Text style={{ fontSize: 13, color: theme.colors.gray }}>{mockUserInformation.comments || "Nada por aqui..."}</Text>
+                    {mockUserInformation.comments > 0 && (
+                        <TouchableOpacity style={{ width: 30, height: 20 }}>
+                            <Text style={{ fontSize: 13, color: theme.colors.text, fontWeight: 'bold' }}>Ver</Text>
+                        </TouchableOpacity>
+                    )}
                 </View>
             </View>
 
@@ -151,6 +174,46 @@ export default function Perfil() {
                     ))}
                 </View>
             </View>
+
+            <Modal
+                visible={!!selectedTrophy}
+                transparent
+                animationType="fade"
+                onRequestClose={() => setSelectedTrophy(null)}
+            >
+                <View style={{
+                    flex: 1,
+                    backgroundColor: 'rgba(0,0,0,0.4)',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: 20,
+                }}>
+                    <View style={{
+                        backgroundColor: theme.colors.background,
+                        borderRadius: 10,
+                        padding: 20,
+                        gap: 10,
+                        width: '100%',
+                    }}>
+                        <View style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                        }}>
+                            <Text style={{ fontSize: 16, fontWeight: 'bold', color: theme.colors.text }}>
+                                {selectedTrophy?.name}
+                            </Text>
+                            <TouchableOpacity onPress={() => setSelectedTrophy(null)} style={{ padding: 5 }}>
+                                <X size={20} color={theme.colors.gray} />
+                            </TouchableOpacity>
+                        </View>
+
+                        <Text style={{ fontSize: 14, color: theme.colors.gray }}>
+                            {selectedTrophy?.description}
+                        </Text>
+                    </View>
+                </View>
+            </Modal>
         </ScrollView >
     )
 }

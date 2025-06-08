@@ -1,4 +1,5 @@
 import { Post } from './Posts';
+import { Trophy } from './Trophy';
 
 export interface UserInformation {
   name: string;
@@ -11,7 +12,7 @@ export interface UserInformation {
   following: number;
   tag: string;
   bio: string;
-  trophies: string[];
+  trophies?: Trophy[];
   comments: number;
   subjects: Post[];
 }

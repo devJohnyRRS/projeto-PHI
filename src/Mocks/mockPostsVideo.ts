@@ -18,10 +18,10 @@ export const mockPostsVideos: MediaPost[] = [
   {
     id: 2,
     type: 'video',
-    title: 'A RESPOSTA PARA QUALQUER DANO MÁGICO NA TOP LANE',
-    link: 'W6hnaV90-k4',
+    title: 'EQUAÇÃO DO 2º GRAU | FÓRMULA DE BHASKARA | FICOU FÁCIL',
+    link: 'ZZ9gGsqwrpo',
     stats: {
-      badge: ['League of Legends', 'Games'],
+      badge: ['Matemática'],
       time: '30min atrás',
       comments: 120,
       likes: 694,

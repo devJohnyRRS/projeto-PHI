@@ -1,7 +1,8 @@
 import { StoreItem } from '../types/StoreItem';
 
-const image = require('../../assets/icone.jpg');
-const background = require('../../assets/vinao.jpg');
+const baruffi = require('../../assets/icones loja/baruffi.jpg');
+const sandro = require('../../assets/icones loja/sandro.jpg');
+const noite = require('../../assets/papeis de parede/noite.jpg');
 
 export const mockPopularesLoja: StoreItem[] = [
   {
@@ -10,25 +11,25 @@ export const mockPopularesLoja: StoreItem[] = [
     title: 'Moldura Dourada',
     blocked: true,
     price: 500,
-    level: 3,
-    color: '#FFD700', // dourado
+    level: 'Premium',
+    color: '#FFD700',
   },
   {
     id: 2,
-    image,
+    image: baruffi,
     type: 'icone',
-    title: 'Ícone Ninja',
+    title: 'Ícone Baruffi',
     blocked: false,
-    price: 250,
+    price: 300,
     level: 1,
   },
   {
     id: 3,
-    image: background,
+    image: noite,
     type: 'papel',
-    title: 'Papel Espacial',
-    blocked: true,
-    price: 400,
+    title: 'Noite Urbana',
+    blocked: false,
+    price: 420,
     level: 2,
   },
   {
@@ -42,11 +43,11 @@ export const mockPopularesLoja: StoreItem[] = [
   },
   {
     id: 5,
-    image,
+    image: sandro,
     type: 'icone',
-    title: 'Ícone Robô',
+    title: 'Ícone homem laranja',
     blocked: true,
-    price: 300,
-    level: 2,
+    price: 400,
+    level: 3,
   },
 ];
