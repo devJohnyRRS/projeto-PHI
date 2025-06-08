@@ -4,7 +4,7 @@ import FotoPerfil from '../FotoPerfil'
 import { BellSimple, BellSimpleRinging, MagnifyingGlass } from 'phosphor-react-native'
 import theme from '../../assets/themes/THEMES'
 import { useTypedNavigation } from '../../hooks/useNavigate'
-import DrawerNotificacao from '../../screens/DrawerNotificacao'
+import DrawerNotificacao from '../DrawerNotificacao'
 import { useNotifications } from '../../context/NotificacaoContext';
 import CustomImput from '../customInput/CustomInput'
 

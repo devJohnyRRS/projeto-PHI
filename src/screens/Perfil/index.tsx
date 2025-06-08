@@ -3,6 +3,7 @@ import React from 'react'
 import theme from '../../assets/themes/THEMES'
 import { Gear, CaretLeft, Star, PencilSimple, SlidersHorizontal, X } from 'phosphor-react-native';
 import CustomButton from '../../components/customButton/CustomButton';
+import DrawerConfiguracoes from '../../components/DrawerConfiguracoes';
 import AssuntoButton from '../../components/AssuntoButton';
 import PostCard from '../../components/PostCard';
 import { useTypedNavigation } from '../../hooks/useNavigate';
@@ -19,6 +20,7 @@ export default function Perfil() {
     const flag = require("../../../assets/brasil.png");
 
     const [selectedTrophy, setSelectedTrophy] = useState<Trophy | null>(null);
+    const [isConfigVisible, setConfigVisible] = useState(false);
 
     const handleGoBack = () => {
         navigation.goBack();
@@ -41,7 +43,9 @@ export default function Perfil() {
                     <TouchableOpacity onPress={handleGoBack} style={{ padding: 5 }}>
                         <CaretLeft color={theme.colors.textLight} weight='bold' />
                     </TouchableOpacity>
-                    <Gear color={theme.colors.textLight} weight='fill' />
+                    <TouchableOpacity onPress={() => setConfigVisible(true)} style={{ padding: 5 }}>
+                        <Gear color={theme.colors.textLight} weight='fill' />
+                    </TouchableOpacity>
                 </View>
 
                 <View style={{
@@ -214,6 +218,9 @@ export default function Perfil() {
                     </View>
                 </View>
             </Modal>
+
+            <DrawerConfiguracoes visible={isConfigVisible} onClose={() => setConfigVisible(false)} />
+
         </ScrollView >
     )
 }

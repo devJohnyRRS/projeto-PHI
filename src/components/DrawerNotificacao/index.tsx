@@ -1,4 +1,3 @@
-// components/DrawerNotificacao.tsx
 import React, { useEffect, useRef } from 'react';
 import {
     Animated,
@@ -11,11 +10,12 @@ import {
     TouchableOpacity,
     Modal
 } from 'react-native';
-import { Portal } from 'react-native-paper';
 import theme from '../../assets/themes/THEMES';
 import { Circle, X } from 'phosphor-react-native';
-import CustomButton from '../../components/customButton/CustomButton';
 import { useNotifications } from '../../context/NotificacaoContext';
+import SideDrawer from '../../components/SideDrawer';
+import { Portal } from 'react-native-paper';
+import CustomButton from '../../components/customButton/CustomButton';
 
 const { width, height } = Dimensions.get('screen');
 
@@ -77,63 +77,49 @@ export default function DrawerNotificacao({ visible, onClose }: DrawerNotificaca
 
     return (
         <Portal>
-            <View style={styles.overlayContainer}>
-                <Pressable style={styles.overlay} onPress={onClose} />
+            <SideDrawer visible={visible} onClose={onClose} title="Notificações">
+                <TouchableOpacity onPress={handleSeenNotifications} style={{ paddingBottom: 5 }}>
+                    <Text style={{ color: theme.colors.gray, fontSize: 13 }}>
+                        Ler todas
+                    </Text>
+                </TouchableOpacity>
 
-                <Animated.View style={[styles.drawer, { transform: [{ translateX }] }]}>
-                    <View style={{ flex: 1, marginTop: 24, gap: 5 }}>
-
-                        <Text style={{ color: theme.colors.text, fontSize: 16, fontWeight: 'bold' }}>
-                            Notificações
-                        </Text>
-
-                        <TouchableOpacity onPress={handleSeenNotifications} style={{ paddingBottom: 5 }}>
-                            <Text style={{ color: theme.colors.gray, fontSize: 13 }}>
-                                Ler todas
+                <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 15 }}>
+                    {notifications.map((notification) => (
+                        <TouchableOpacity
+                            key={notification.id}
+                            onPress={() => handleOpenNotification(notification.id)}
+                            style={{
+                                backgroundColor: theme.colors.background,
+                                padding: 10,
+                                borderRadius: 5,
+                                marginBottom: 10,
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <Text
+                                style={{
+                                    color: theme.colors.text,
+                                    fontWeight: notification.visualized ? 'normal' : 'bold',
+                                    flexShrink: 1,
+                                    flex: 1,
+                                    marginRight: 8,
+                                }}
+                                numberOfLines={1}
+                                ellipsizeMode="tail"
+                            >
+                                {notification.name}
                             </Text>
+                            {!notification.visualized && (
+                                <Circle color={theme.colors.primary} weight="fill" size={12} />
+                            )}
                         </TouchableOpacity>
+                    ))}
+                </ScrollView>
+            </SideDrawer>
 
-                        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 15 }} showsVerticalScrollIndicator={false}>
-                            {notifications.map((notification) => (
-                                <TouchableOpacity
-                                    key={notification.id}
-                                    onPress={() => handleOpenNotification(notification.id)}
-                                    style={{
-                                        backgroundColor: theme.colors.background,
-                                        padding: 10,
-                                        borderRadius: 5,
-                                        marginBottom: 10,
-                                        flexDirection: 'row',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center',
-                                    }}
-                                >
-                                    <Text
-                                        style={{
-                                            color: theme.colors.text,
-                                            fontWeight: notification.visualized ? 'normal' : 'bold',
-                                            flexShrink: 1,
-                                            flex: 1,
-                                            marginRight: 8,
-                                        }}
-                                        numberOfLines={1}
-                                        ellipsizeMode="tail"
-                                    >
-                                        {notification.name}
-                                    </Text>
-
-                                    {!notification.visualized && (
-                                        <Circle color={theme.colors.primary} weight="fill" size={12} />
-                                    )}
-                                </TouchableOpacity>
-
-                            ))}
-                        </ScrollView>
-
-                    </View>
-                </Animated.View>
-
-            </View>
 
             <Modal
                 visible={!!selectedNotification}
