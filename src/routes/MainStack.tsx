@@ -1,9 +1,9 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Login from '../screens/Login';
+import Login from '../screens/login';
 import { MainStackParamList } from "../types/MainStackList";
-import CadastroOne from '../screens/cadastro/CadastroOne';
-import CadastroTwo from '../screens/cadastro/CadastroTwo';
+import CadastroOne from '../screens/cadastro/cadastroOne';
+import CadastroTwo from '../screens/cadastro/cadastroTwo';
 import AppTabs from "./TabNavigationt";
 import Artigos from "../screens/Artigos";
 import Audios from "../screens/Audios";

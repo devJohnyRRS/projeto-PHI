@@ -26,6 +26,7 @@ export interface AssuntoPost extends BasePost {
   name: string;
   username: string;
   profileImage: any;
+  borderColor?: string;
   questionTag?: QuestionTag;
 }
 

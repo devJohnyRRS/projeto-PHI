@@ -72,7 +72,7 @@ function PostCard({ post, children }: PostCardProps) {
                         name={post.name}
                         username={post.username}
                         image={post.profileImage}
-                        border={theme.colors.gold}
+                        border={post.borderColor ? post.borderColor : ""}
                     />
                 ) : (
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>

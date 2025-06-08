@@ -6,37 +6,23 @@ import {
     FlatList,
     Dimensions,
     ViewToken,
+    TouchableOpacity,
+    Linking,
 } from 'react-native';
 import { CaretLeft, CaretRight, Circle } from 'phosphor-react-native';
 import theme from '../../assets/themes/THEMES';
 import CustomButton from '../customButton/CustomButton';
+import { Banner } from '../../types/Banner';
 
 const screenWidth = Dimensions.get('window').width;
-const horizontalMargin = 30; // 15 + 15 de margin do container na Home
+const horizontalMargin = 30;
 const itemWidth = screenWidth - horizontalMargin;
 
-const banners = [
-    {
-        id: '1',
-        title: 'Prepare-se para o ENEM!',
-        description: 'Estude com foco e disciplina para alcançar seus objetivos.',
-        image: require('../../../assets/enem.webp'),
-    },
-    {
-        id: '2',
-        title: 'Descubra novas oportunidades!',
-        description: 'Participe de eventos e workshops da sua área.',
-        image: require('../../../assets/enem.webp'),
-    },
-    {
-        id: '3',
-        title: 'Aprendizado contínuo',
-        description: 'Explore novos cursos e materiais para seu crescimento.',
-        image: require('../../../assets/enem.webp'),
-    },
-];
+interface CarroselProps {
+    banners?: Banner[];
+}
 
-export default function Carrosel() {
+export default function Carrosel({ banners = [] }: CarroselProps) {
     const [activeIndex, setActiveIndex] = useState(0);
     const flatListRef = useRef<FlatList>(null);
 
@@ -89,13 +75,17 @@ export default function Carrosel() {
                 })}
                 contentContainerStyle={{}}
                 renderItem={({ item }) => (
-                    <View
+                    <TouchableOpacity
                         style={{
                             width: itemWidth,
                             height: 160,
                             borderRadius: 20,
                             justifyContent: 'center',
                         }}
+                        onPress={() => {
+                            Linking.openURL(item.link);
+                        }
+                        }
                     >
                         <Image
                             source={item.image}
@@ -136,7 +126,7 @@ export default function Carrosel() {
                                 </Text>
                             </View>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 )}
             />
 

@@ -4,7 +4,7 @@ import { Post } from '../types/Posts';
 const profileGustavo = require('../../assets/gustavo.png');
 const profileVinicius = require('../../assets/vinicius.jpg');
 const profileJohny = require('../../assets/johny.jpg');
-const profileMarcelly = require('../../assets/gustavo.png');
+const profileMarcelly = require('../../assets/marcelly.jpg');
 const profileSans = require('../../assets/sans.jpg');
 const profileSonic = require('../../assets/sonic.jpg');
 
@@ -16,17 +16,17 @@ export const mockPostsAssuntosPopulares: Post[] = [
     username: '@GustavoSouza1304',
     profileImage: profileGustavo,
     stats: {
-      badge: ['Análise e desenvolvimento'],
+      badge: ['Matemática', 'Álgebra'],
       time: '30min atrás',
       content:
-        'Quem mais ta ansioso pro filme do FIFO 2: O Retorno?? Só eu?? 😂',
-      comments: 589,
-      likes: 5000,
-      dislikes: 1,
+        'Pessoal, vocês podem me ajudar com essa equação do app? 🔢\n\n"Resolva para x: 2x + 5 = 17". Já tentei isolar o x, mas não consegui achar a resposta.',
+      comments: 32,
+      likes: 120,
+      dislikes: 2,
     },
     questionTag: {
       color: theme.colors.lightBlue,
-      code: '#M18790',
+      code: '#Q12345',
     },
   },
   {
@@ -35,12 +35,14 @@ export const mockPostsAssuntosPopulares: Post[] = [
     name: 'Vínicius Cauã',
     username: '@vinip',
     profileImage: profileVinicius,
+    borderColor: theme.colors.gold,
     stats: {
-      badge: ['Mobile'],
+      badge: ['Mobile', 'Estudos'],
       time: '1h atrás',
-      content: 'Hoje eu aprendi sobre React Native e estou amando! 🚀',
-      comments: 123,
-      likes: 1020,
+      content:
+        'Terminei meu app da aula de matemática, agora ele resolve equações do segundo grau! 📱➗',
+      comments: 34,
+      likes: 890,
       dislikes: 0,
     },
   },
@@ -50,28 +52,32 @@ export const mockPostsAssuntosPopulares: Post[] = [
     name: 'Johny',
     username: '@Jonhy_bravo',
     profileImage: profileJohny,
+    borderColor: theme.colors.lightBlue,
     stats: {
-      badge: ['Ferramentas'],
+      badge: ['História', 'Humanas'],
       time: '2h atrás',
-      content: 'Qual IDE vocês preferem: VSCode ou WebStorm?',
-      comments: 87,
-      likes: 320,
-      dislikes: 5,
+      content:
+        'Alguém tem indicação de documentário sobre a Segunda Guerra para o trabalho de história?',
+      comments: 47,
+      likes: 650,
+      dislikes: 2,
     },
   },
   {
     id: 4,
     type: 'assunto',
-    name: 'Mariana Rocha',
-    username: '@marianadesigner',
+    name: 'Marcelly Farias',
+    username: '@marcyyy',
     profileImage: profileMarcelly,
+    borderColor: '#FF69B4',
     stats: {
-      badge: ['Lançamento'],
+      badge: ['Física', 'Exatas'],
       time: '3h atrás',
-      content: 'Acabei de publicar meu primeiro app na Play Store 😍',
-      comments: 45,
-      likes: 700,
-      dislikes: 2,
+      content:
+        'Gente, vocês também acham difícil entender cinemática? Alguma dica boa? 🧠',
+      comments: 59,
+      likes: 480,
+      dislikes: 5,
     },
   },
   {
@@ -81,27 +87,29 @@ export const mockPostsAssuntosPopulares: Post[] = [
     username: '@lucas.tech',
     profileImage: profileSans,
     stats: {
-      badge: ['Design'],
+      badge: ['Saúde', 'Biologia'],
       time: '4h atrás',
-      content: 'Alguém recomenda um curso top de UX Design?',
-      comments: 65,
-      likes: 280,
-      dislikes: 3,
+      content:
+        'Vocês acham que sono afeta a performance nos estudos? To testando dormir melhor!',
+      comments: 73,
+      likes: 560,
+      dislikes: 1,
     },
   },
   {
     id: 6,
     type: 'assunto',
-    name: 'Julia Martins',
-    username: '@juliamartins',
+    name: 'Evellyn Santos',
+    username: '@evellyn_santos',
     profileImage: profileSonic,
     stats: {
-      badge: ['Carreira'],
+      badge: ['Português', 'Redação'],
       time: '5h atrás',
-      content: 'Como vocês organizam seu portfólio de dev? Alguma dica?',
-      comments: 77,
-      likes: 390,
-      dislikes: 1,
+      content:
+        'Qual tema vocês acham que pode cair na redação do ENEM esse ano? 💭📝',
+      comments: 112,
+      likes: 990,
+      dislikes: 3,
     },
   },
 ];

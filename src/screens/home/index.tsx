@@ -5,6 +5,7 @@ import Assuntos from '../../components/Assuntos';
 import PerfilHeader from '../../components/PerfilHeader';
 import Carrosel from '../../components/Carrossel';
 import AssuntoButton from '../../components/AssuntoButton';
+import { mockBanners } from '../../Mocks/mockBanners';
 
 export default function Home() {
 
@@ -15,7 +16,7 @@ export default function Home() {
 
             <View style={{ margin: 15, gap: 10, marginBottom: 15 }}>
 
-                <Carrosel />
+                <Carrosel banners={mockBanners} />
 
                 <AssuntoButton />
 

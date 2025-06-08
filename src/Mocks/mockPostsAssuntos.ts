@@ -11,26 +11,6 @@ export const mockPostsAssuntos: Post[] = [
     username: '@GustavoSouza1304',
     profileImage,
     stats: {
-      badge: ['Análise e desenvolvimento'],
-      time: '30min atrás',
-      content:
-        'Quem mais ta ansioso pro filme do FIFO 2: O Retorno?? Só eu?? 😂',
-      comments: 589,
-      likes: 5000,
-      dislikes: 1,
-    },
-    questionTag: {
-      color: theme.colors.lightBlue,
-      code: '#M18790',
-    },
-  },
-  {
-    id: 2,
-    type: 'assunto',
-    name: 'Gustavo Souza',
-    username: '@GustavoSouza1304',
-    profileImage,
-    stats: {
       badge: ['Mobile'],
       time: '1h atrás',
       content: 'Hoje eu aprendi sobre React Native e estou amando! 🚀',
@@ -40,7 +20,7 @@ export const mockPostsAssuntos: Post[] = [
     },
   },
   {
-    id: 3,
+    id: 2,
     type: 'assunto',
     name: 'Gustavo Souza',
     username: '@GustavoSouza1304',
@@ -55,7 +35,7 @@ export const mockPostsAssuntos: Post[] = [
     },
   },
   {
-    id: 4,
+    id: 3,
     type: 'assunto',
     name: 'Gustavo Souza',
     username: '@GustavoSouza1304',
@@ -70,7 +50,7 @@ export const mockPostsAssuntos: Post[] = [
     },
   },
   {
-    id: 5,
+    id: 4,
     type: 'assunto',
     name: 'Gustavo Souza',
     username: '@GustavoSouza1304',
