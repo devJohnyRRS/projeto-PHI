@@ -1,10 +1,10 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Login from '../screens/Login';
+import Login from '../screens/login';
 import { MainStackParamList } from "../types/MainStackList";
 
-import CadastroOne from '../screens/cadastro/CadastroOne';
-import CadastroTwo from '../screens/cadastro/CadastroTwo';
+import CadastroOne from '../screens/cadastro/cadastroOne';
+import CadastroTwo from '../screens/cadastro/cadastroTwo';
 import AppTabs from "./TabNavigationt";
 import Artigos from "../screens/Artigos";
 import Audios from "../screens/Audios";
@@ -14,10 +14,8 @@ import PapeisDeParede from '../screens/PapeisDeParede';
 import Icones from '../screens/Icones';
 import Molduras from '../screens/Molduras';
 import Assinar from '../screens/Assinar';
-import Perfil from "../screens/Perfil";
 import Chat from "../screens/chat/Chat";
 import ChatPrivado from "../screens/chat/ChatPrivado";
-import Home from "../screens/home";
 
 
 const Stack = createStackNavigator<MainStackParamList, "MainStack">();
@@ -28,7 +26,6 @@ export default function AppNavigator() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="CadastroOne" component={CadastroOne} />
       <Stack.Screen name="CadastroTwo" component={CadastroTwo} />
-      <Stack.Screen name="Perfil" component={Perfil} />
       <Stack.Screen name="Chat" component={Chat} />
       <Stack.Screen name="ChatPrivado" component={ChatPrivado} />
       <Stack.Screen name="Home" component={AppTabs} />

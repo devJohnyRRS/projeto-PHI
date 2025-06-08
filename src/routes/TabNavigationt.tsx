@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RoutesList } from "../types/TabNavigationList";
-import Home from '../screens/Home';
+import Home from '../screens/home';
 import Banca from "../screens/Banca";
 import Perfil from "../screens/Perfil";
 import {
