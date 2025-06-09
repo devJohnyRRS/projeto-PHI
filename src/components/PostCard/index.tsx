@@ -1,97 +1,122 @@
-import { Text, View } from 'react-native'
-import FotoPerfil from '../FotoPerfil'
-import theme from "../../assets/themes/THEMES";
-import { DotsThreeOutlineVertical, ChatCircle, ThumbsUp, ThumbsDown, BookmarkSimple } from "phosphor-react-native";
+import { useState } from 'react';
+import { Text, View, TouchableOpacity } from 'react-native';
+import FotoPerfil from '../FotoPerfil';
+import {
+    DotsThreeOutlineVertical, ChatCircle, ThumbsUp,
+    ThumbsDown, BookmarkSimple, Video, BookOpen,
+    Newspaper, SpeakerSimpleHigh
+} from "phosphor-react-native";
+import theme from '../../assets/themes/THEMES';
+import styles from './styles';
 import Badge from '../Badge';
+import QuestionTag from '../QuestionTag';
+import { Post } from '../../types/Posts';
 
 interface PostCardProps {
-    post: {
-        name: string;
-        username: string;
-        profileImage: any;
-        badge: string;
-        time: string;
-        content: string;
-        comments: number;
-        likes: number;
-        dislikes: number;
-        questionTag?: {
-            color: string;
-            code: string;
-        }
-    };
+    post: Post;
+    children?: React.ReactNode;
 }
 
-function PostCard({ post }: PostCardProps) {
+export default function PostCard({ post, children }: PostCardProps) {
+    const isAssunto = post.type === 'assunto';
+
+    const [liked, setLiked] = useState(false);
+    const [disliked, setDisliked] = useState(false);
+    const [saved, setSaved] = useState(false);
+    const [likesCount, setLikesCount] = useState(post.stats.likes);
+    const [dislikesCount, setDislikesCount] = useState(post.stats.dislikes);
+
+    const toggleLike = () => {
+        setLiked(prev => {
+            if (!prev) setLikesCount(likesCount + 1);
+            else setLikesCount(likesCount - 1);
+
+            if (disliked) {
+                setDisliked(false);
+                setDislikesCount(dislikesCount - 1);
+            }
+
+            return !prev;
+        });
+    };
+
+    const toggleDislike = () => {
+        setDisliked(prev => {
+            if (!prev) setDislikesCount(dislikesCount + 1);
+            else setDislikesCount(dislikesCount - 1);
+
+            if (liked) {
+                setLiked(false);
+                setLikesCount(likesCount - 1);
+            }
+
+            return !prev;
+        });
+    };
+
+    const toggleSave = () => setSaved(prev => !prev);
 
     return (
-        <View
-            style={{
-                backgroundColor: theme.colors.textLight,
-                width: '100%',
-                marginBottom: 20,
-                padding: 10,
-                borderRadius: 5,
-                flexDirection: 'column',
-            }}
-        >
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                <FotoPerfil
-                    name={post.name}
-                    username={post.username}
-                    image={post.profileImage}
-                    border={theme.colors.gold}
-                />
-                <View style={{ flexDirection: 'row', gap: 5, alignItems: 'center' }}>
-                    <Badge text={post.badge} />
+        <View style={styles.card}>
+            <View style={styles.header}>
+                {isAssunto ? (
+                    <FotoPerfil
+                        name={post.name}
+                        username={post.username}
+                        image={post.profileImage}
+                        border={post.borderColor || ''}
+                    />
+                ) : (
+                    <View style={styles.typeInfo}>
+                        {post.type === 'video' && <Video weight='fill' color={theme.colors.primary} />}
+                        {post.type === 'artigo' && <Newspaper weight='fill' color={theme.colors.primary} />}
+                        {post.type === 'audio' && <SpeakerSimpleHigh weight='fill' color={theme.colors.primary} />}
+                        {post.type === 'questao' && <BookOpen weight='fill' color={theme.colors.primary} />}
+                        <Text style={styles.typeText}>
+                            {post.type.charAt(0).toUpperCase() + post.type.slice(1)}
+                        </Text>
+                    </View>
+                )}
+                <View style={styles.badgeRow}>
+                    {post.stats.badge.map((badge, index) => (
+                        <Badge key={index} text={badge} />
+                    ))}
                     <DotsThreeOutlineVertical color={theme.colors.text} size={24} weight="fill" />
                 </View>
             </View>
 
-            <Text style={{ fontSize: 10, textAlign: 'right' }}>{post.time}</Text>
+            <Text style={styles.time}>{post.stats.time}</Text>
 
-            {post.questionTag && (
-                <View style={{ backgroundColor: post.questionTag.color, padding: 8, borderRadius: 5, marginTop: 10 }}>
-                    <Text>Questão {post.questionTag.code}</Text>
-                </View>
+            {'questionTag' in post && post.questionTag && (
+                <QuestionTag color={post.questionTag.color} code={post.questionTag.code} />
             )}
 
-            <View style={{ marginTop: 10, gap: 10 }}>
-                <Text style={{ fontSize: 16 }}>{post.content}</Text>
+            <View style={styles.body}>
+                {children}
 
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        gap: 10,
-                        marginTop: 10,
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                    }}
-                >
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
+                <View style={styles.footer}>
+                    <View style={styles.iconText}>
                         <ChatCircle size={30} weight="fill" color={theme.colors.gray} />
-                        <Text style={{ fontSize: 16, color: theme.colors.gray }}>{post.comments}</Text>
+                        <Text style={styles.footerText}>{post.stats.comments}</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-                            <ThumbsUp size={30} weight="fill" color={theme.colors.gray} />
-                            <Text style={{ fontSize: 16, color: theme.colors.gray }}>{post.likes}</Text>
-                        </View>
+                    <View style={styles.iconGroup}>
+                        <TouchableOpacity onPress={toggleLike} style={styles.iconText}>
+                            <ThumbsUp size={30} weight="fill" color={liked ? theme.colors.primary : theme.colors.gray} />
+                            <Text style={styles.footerText}>{likesCount}</Text>
+                        </TouchableOpacity>
 
-                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-                            <ThumbsDown size={30} weight="fill" color={theme.colors.gray} />
-                            <Text style={{ fontSize: 16, color: theme.colors.gray }}>{post.dislikes}</Text>
-                        </View>
+                        <TouchableOpacity onPress={toggleDislike} style={styles.iconText}>
+                            <ThumbsDown size={30} weight="fill" color={disliked ? theme.colors.primary : theme.colors.gray} />
+                            <Text style={styles.footerText}>{dislikesCount}</Text>
+                        </TouchableOpacity>
 
-                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-                            <BookmarkSimple size={30} weight="fill" color={theme.colors.gray} />
-                        </View>
+                        <TouchableOpacity onPress={toggleSave}>
+                            <BookmarkSimple size={30} weight="fill" color={saved ? theme.colors.primary : theme.colors.gray} />
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
         </View>
     );
 }
-
-export default PostCard;

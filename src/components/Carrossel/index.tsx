@@ -6,37 +6,24 @@ import {
     FlatList,
     Dimensions,
     ViewToken,
+    TouchableOpacity,
+    Linking,
 } from 'react-native';
 import { CaretLeft, CaretRight, Circle } from 'phosphor-react-native';
 import theme from '../../assets/themes/THEMES';
 import CustomButton from '../customButton/CustomButton';
+import { Banner } from '../../types/Banner';
+import { styles } from './styles';
 
 const screenWidth = Dimensions.get('window').width;
-const horizontalMargin = 48; // 24 + 24 de margin do container na Home
+const horizontalMargin = 30;
 const itemWidth = screenWidth - horizontalMargin;
 
-const banners = [
-    {
-        id: '1',
-        title: 'Prepare-se para o ENEM!',
-        description: 'Estude com foco e disciplina para alcançar seus objetivos.',
-        image: require('../../../assets/enem.webp'),
-    },
-    {
-        id: '2',
-        title: 'Descubra novas oportunidades!',
-        description: 'Participe de eventos e workshops da sua área.',
-        image: require('../../../assets/enem.webp'),
-    },
-    {
-        id: '3',
-        title: 'Aprendizado contínuo',
-        description: 'Explore novos cursos e materiais para seu crescimento.',
-        image: require('../../../assets/enem.webp'),
-    },
-];
+interface CarroselProps {
+    banners?: Banner[];
+}
 
-export default function Carrosel() {
+export default function Carrosel({ banners = [] }: CarroselProps) {
     const [activeIndex, setActiveIndex] = useState(0);
     const flatListRef = useRef<FlatList>(null);
 
@@ -67,8 +54,7 @@ export default function Carrosel() {
     }).current;
 
     return (
-        <View style={{ width: '100%', position: 'relative' }}>
-            {/* FlatList com banners */}
+        <View style={styles.wrapper}>
             <FlatList
                 data={banners}
                 ref={flatListRef}
@@ -89,109 +75,43 @@ export default function Carrosel() {
                 })}
                 contentContainerStyle={{}}
                 renderItem={({ item }) => (
-                    <View
-                        style={{
-                            width: itemWidth,
-                            height: 160,
-                            borderRadius: 20,
-                            justifyContent: 'center',
-                        }}
+                    <TouchableOpacity
+                        style={[styles.bannerContainer, { width: itemWidth }]}
+                        onPress={() => Linking.openURL(item.link)}
                     >
                         <Image
                             source={item.image}
-                            style={{
-                                position: 'absolute',
-                                width: '100%',
-                                height: '100%',
-                                resizeMode: 'cover',
-                                opacity: 0.3,
-                                borderRadius: 20,
-                            }}
+                            style={styles.bannerImage}
                         />
 
-                        <View
-                            style={{
-                                flexDirection: 'row',
-                                width: '100%',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                paddingHorizontal: 70,
-                            }}
-                        >
-                            <View style={{ maxWidth: '100%' }}>
-                                <Text style={{ color: theme.colors.primary, fontSize: 20, fontWeight: 'bold' }}>
+                        <View style={styles.bannerContent}>
+                            <View style={styles.textWrapper}>
+                                <Text style={styles.title}>
                                     {item.title}
                                 </Text>
                                 <Text
                                     numberOfLines={2}
                                     ellipsizeMode="tail"
-                                    style={{
-                                        color: theme.colors.primary,
-                                        fontSize: 16,
-                                        fontWeight: '600',
-                                        marginTop: 5,
-                                    }}
+                                    style={styles.description}
                                 >
                                     {item.description}
                                 </Text>
                             </View>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 )}
             />
 
-            {/* Botões fixos no centro da altura da FlatList */}
-            <View
-                pointerEvents="box-none"
-                style={{
-                    position: 'absolute',
-                    top: 70, // metade da altura da FlatList (160 / 2)
-                    left: 0,
-                    right: 0,
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    paddingHorizontal: 32,
-                }}
-            >
-                <CustomButton
-                    onPress={handlePrev}
-                    style={{
-                        backgroundColor: theme.colors.primary,
-                        borderRadius: 20,
-                        width: 30,
-                        height: 30,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}
-                >
-                    <CaretLeft color={theme.colors.textLight} size={20} />
+            <View style={styles.navigationButtons}>
+                <CustomButton onPress={handlePrev} style={styles.arrowButton}>
+                    <CaretLeft color={theme.colors.textLight} size={20} weight='bold' />
                 </CustomButton>
-
-                <CustomButton
-                    onPress={handleNext}
-                    style={{
-                        backgroundColor: theme.colors.primary,
-                        borderRadius: 20,
-                        width: 30,
-                        height: 30,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}
-                >
-                    <CaretRight color={theme.colors.textLight} size={20} />
+                <CustomButton onPress={handleNext} style={styles.arrowButton}>
+                    <CaretRight color={theme.colors.textLight} size={20} weight='bold' />
                 </CustomButton>
             </View>
 
-            {/* Indicadores de página */}
-            <View
-                style={{
-                    width: '100%',
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    gap: 8,
-                    marginTop: 8,
-                }}
-            >
+            <View style={styles.indicatorRow}>
                 {banners.map((_, index) => (
                     <Circle
                         key={index}

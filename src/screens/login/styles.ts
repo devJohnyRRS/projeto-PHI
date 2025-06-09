@@ -46,4 +46,14 @@ export const styles = StyleSheet.create({
     color: theme.colors.primary,
     fontFamily: theme.fonts.medium,
   },
+  eye: {
+    width: 40,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    top: 83,
+    right: 10,
+    zIndex: 1,
+  },
 });

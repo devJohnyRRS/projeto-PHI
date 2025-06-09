@@ -4,7 +4,7 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import theme from "../../assets/themes/THEMES";
 import CustomButton from "../../components/customButton/CustomButton";
 import { styles } from "./styles";
-import CustomImput from "../../components/customInput/CustomImput";
+import CustomImput from "../../components/customInput/CustomInput";
 import { CheckSquare, Square } from "phosphor-react-native";
 import { useTypedNavigation } from "../../hooks/useNavigate";
 
@@ -18,6 +18,7 @@ export default function Login() {
   const [erroEmail, setErroEmail] = useState(false);
   const [erroSenha, setErroSenha] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   function handleLogin() {
     let erro = false;
@@ -39,8 +40,7 @@ export default function Login() {
   }
 
   const handleToCadastro = () => {
-    navigation.navigate("Cadastro");
-
+    navigation.navigate("CadastroOne");
   };
   return (
     <>
@@ -85,9 +85,12 @@ export default function Login() {
               placeholderTextColor={theme.colors.text}
               value={senha}
               onChangeText={setSenha}
-              secureTextEntry
+              secureTextEntry={!showPassword}
               error={erroSenha}
               errorMessage="Preencha a senha"
+              showPasswordToggle
+              showPassword={showPassword}
+              onTogglePassword={() => setShowPassword((v) => !v)}
             />
           </View>
           <View
